@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<levels>
+		<level id="0">
+			<implements>
+				<implement id="0">
+					<enemy character="garrulo" delay="0" />
+					<enemy character="chulo" delay="5" />
+					<enemy character="friki" delay="10" />
+				</implement>
+				<implement id="1">
+					<enemy character="chulo" delay="0" />
+					<enemy character="garrulo" delay="5" />
+					<enemy character="friki" delay="10" />
+				</implement>
+			</implements>
+		</level>
+		<level id="1">
+			<implements>
+				<implement id="0">
+					<enemy character="garrulo" delay="0" />
+					<enemy character="chulo" delay="5" />
+					<enemy character="friki" delay="10" />
+				</implement>
+				<implement id="1">
+					<enemy character="chulo" delay="0" />
+					<enemy character="garrulo" delay="5" />
+					<enemy character="friki" delay="10" />
+				</implement>
+			</implements>
+		</level>
+	</levels>
