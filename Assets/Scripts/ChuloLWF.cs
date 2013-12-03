@@ -2,11 +2,10 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public class Girlfriend : LWFObject {
-	
+public class ChuloLWF : LWFObject {
 
-    void Start()
-    {
+	// Use this for initialization
+	void Start () {
         string dir = System.IO.Path.GetDirectoryName(lwfName);
         if (dir.Length > 0)
             dir += "/";
@@ -15,7 +14,8 @@ public class Girlfriend : LWFObject {
             UseDrawMeshRenderer();
 
         Load(lwfName, dir);
-        Scale(0.5f, 0.5f);
-    }
-
+        Scale(0.33f, 0.33f);
+	}
+	
+	
 }

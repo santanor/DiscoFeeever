@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 public class Launcher : MonoBehaviour {
 
-	public GameObject Garrulo;
-	public GameObject Friki;
-	public GameObject Torrente;
-	public GameObject Chulo;
+	public Garrulo Garrulo;
+	public Friki Friki;
+	public Torrente Torrente;
+	public Chulo Chulo;
 	public int Level;
 	JSONObject jObject;
-	List<Moscon> moscones;
+    List<Moscon> moscones;
 	float timer;
 
 
@@ -30,7 +30,7 @@ public class Launcher : MonoBehaviour {
 		{
 			if(moscones[0].timer < timer)
 			{
-				GameObject clonedGuy = (GameObject)Instantiate(moscones[0].moscon,moscones[0].moscon.transform.position, Quaternion.identity);
+                Moscon clonedGuy = (Moscon)Instantiate(moscones[0].moscon, moscones[0].moscon.transform.position, Quaternion.identity);
 				clonedGuy.transform.rigidbody2D.velocity = Vector3.left*50;
 				moscones.RemoveAt(0);
 			}
@@ -41,7 +41,7 @@ public class Launcher : MonoBehaviour {
 
 	private void CreateMoscon(string sprite, string time)
 	{
-		GameObject gObject = null;
+        Moscon gObject = null;
 		switch(sprite)
 		{
 			case "garrulo":
@@ -58,18 +58,9 @@ public class Launcher : MonoBehaviour {
 			break;
 		}
 
-		moscones.Add(new Moscon(gObject, int.Parse(time)));
+		Moscon clone = Instantiate(gObject);
+
+		moscones.Add();
 	}
 }
 
-public class Moscon
-{
-	public GameObject moscon {get;set;}
-	public int timer {get;set;}
-
-	public Moscon(GameObject Moscon,int timer)
-	{
-		this.moscon = Moscon;
-		this.timer = timer;
-	}
-}

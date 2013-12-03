@@ -2,7 +2,7 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public class Torrente : LWFObject{
+public class TorrenteLWF : LWFObject{
 
 	// Use this for initialization
 	void Start () {

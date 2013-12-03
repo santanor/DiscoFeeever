@@ -1,21 +1,24 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
 
-[ExecuteInEditMode]
-public class Chulo : LWFObject {
+class Chulo : Moscon
+{
 
-	// Use this for initialization
-	void Start () {
-        string dir = System.IO.Path.GetDirectoryName(lwfName);
-        if (dir.Length > 0)
-            dir += "/";
+    void Start()
+    {
+    }
 
-        if (Application.isEditor)
-            UseDrawMeshRenderer();
-
-        Load(lwfName, dir);
-        Scale(0.33f, 0.33f);
+	void Update()
+	{
 	}
-	
-	
+
+
+    public void Launch()
+    {
+            
+    }
 }
+

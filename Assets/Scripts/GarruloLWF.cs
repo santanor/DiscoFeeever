@@ -2,7 +2,7 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public class Garrulo : LWFObject
+public class GarruloLWF : LWFObject
 {
 
     // Use this for initialization
