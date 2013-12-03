@@ -28,10 +28,9 @@ public class Launcher : MonoBehaviour {
 		timer += Time.deltaTime;
 		if(moscones.Count > 0)
 		{
-			if(moscones[0].timer < timer)
+			if(moscones[0].GetTimer() < timer)
 			{
-                Moscon clonedGuy = (Moscon)Instantiate(moscones[0].moscon, moscones[0].moscon.transform.position, Quaternion.identity);
-				clonedGuy.transform.rigidbody2D.velocity = Vector3.left*50;
+				moscones[0].Launch();
 				moscones.RemoveAt(0);
 			}
 		}
@@ -58,9 +57,10 @@ public class Launcher : MonoBehaviour {
 			break;
 		}
 
-		Moscon clone = Instantiate(gObject);
+		Moscon clone = (Moscon)gObject.Clone();
+		clone.SetTimer(int.Parse(time));
 
-		moscones.Add();
+		moscones.Add(clone);
 	}
 }
 

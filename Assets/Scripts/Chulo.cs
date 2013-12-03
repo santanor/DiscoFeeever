@@ -4,8 +4,24 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class Chulo : Moscon
+public class Chulo : MonoBehaviour, Moscon
 {
+	int timer;
+
+	public void SetTimer(int timer)
+	{
+		this.timer = timer;
+	}
+
+	public int GetTimer()
+	{
+		return timer;
+	}
+
+	public object Clone()
+	{
+		return this.MemberwiseClone();
+	}
 
     void Start()
     {
@@ -18,7 +34,7 @@ class Chulo : Moscon
 
     public void Launch()
     {
-            
+		this.gameObject.rigidbody2D.velocity = Vector3.left;   
     }
 }
 
