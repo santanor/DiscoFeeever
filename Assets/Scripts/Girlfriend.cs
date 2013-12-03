@@ -3,6 +3,7 @@ using System.Collections;
 
 [ExecuteInEditMode]
 public class Girlfriend : LWFObject {
+	
 
     void Start()
     {
