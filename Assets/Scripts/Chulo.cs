@@ -4,37 +4,13 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class Chulo : MonoBehaviour, Moscon
+public class Chulo :  MosconAbstract
 {
-	int timer;
 
-	public void SetTimer(int timer)
+	void Start()
 	{
-		this.timer = timer;
+		base.SetVelocity(50,60);
+		base.Life = 100;
 	}
-
-	public int GetTimer()
-	{
-		return timer;
-	}
-
-	public object Clone()
-	{
-		return this.MemberwiseClone();
-	}
-
-    void Start()
-    {
-    }
-
-	void Update()
-	{
-	}
-
-
-    public void Launch()
-    {
-		this.gameObject.rigidbody2D.velocity = Vector3.left;   
-    }
 }
 

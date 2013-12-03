@@ -1,37 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Friki : MonoBehaviour, Moscon {
+public class Friki :  MosconAbstract 
+{
 
-	int timer;
-	
-	public void SetTimer(int timer)
-	{
-		this.timer = timer;
-	}
-	
-	public int GetTimer()
-	{
-		return timer;
-	}
-
-	public object Clone()
-	{
-		return this.MemberwiseClone();
-	}
-
-	
 	void Start()
 	{
-	}
-	
-	void Update()
-	{
-	}
-	
-	
-	public void Launch()
-	{
-		this.gameObject.rigidbody2D.velocity = Vector3.left;  
+		base.SetVelocity(20,30);
+		base.Life = 70;
 	}
 }

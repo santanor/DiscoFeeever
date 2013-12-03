@@ -1,36 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Torrente :MonoBehaviour, Moscon {
-
-	int timer;
-	
-	public void SetTimer(int timer)
-	{
-		this.timer = timer;
-	}
-	
-	public int GetTimer()
-	{
-		return timer;
-	}
-
-	public object Clone()
-	{
-		return this.MemberwiseClone();
-	}
-	
+public class Torrente : MosconAbstract 
+{
 	void Start()
 	{
-	}
-	
-	void Update()
-	{
-	}
-	
-	
-	public void Launch()
-	{
-		this.gameObject.rigidbody2D.velocity = Vector3.left;
+		base.SetVelocity(40,50);
+		base.Life = 90;
 	}
 }

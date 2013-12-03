@@ -9,14 +9,14 @@ public class Launcher : MonoBehaviour {
 	public Chulo Chulo;
 	public int Level;
 	JSONObject jObject;
-    List<Moscon> moscones;
+    List<MosconAbstract> moscones;
 	float timer;
 
 
 	// Use this for initialization
 	void Start () {
 		timer = 0;
-		moscones = new List<Moscon>();
+		moscones = new List<MosconAbstract>();
 		System.IO.StreamReader reader = new System.IO.StreamReader(Application.dataPath+"/levels.json");
 		jObject = new JSONObject(reader.ReadToEnd());
 		foreach(var obj in jObject["levels"]["level"][Level]["implements"]["implement"][0]["enemy"].list)
@@ -40,7 +40,7 @@ public class Launcher : MonoBehaviour {
 
 	private void CreateMoscon(string sprite, string time)
 	{
-        Moscon gObject = null;
+        MosconAbstract gObject = null;
 		switch(sprite)
 		{
 			case "garrulo":
@@ -57,7 +57,7 @@ public class Launcher : MonoBehaviour {
 			break;
 		}
 
-		Moscon clone = (Moscon)gObject.Clone();
+		MosconAbstract clone = (MosconAbstract)Instantiate((Object)gObject);
 		clone.SetTimer(int.Parse(time));
 
 		moscones.Add(clone);
