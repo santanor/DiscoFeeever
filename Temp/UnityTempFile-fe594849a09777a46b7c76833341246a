@@ -2,9 +2,9 @@
 -target:library
 -nowarn:0169
 -out:Temp/Assembly-CSharp.dll
--r:E:/Programas/Unity/Data/Managed/UnityEngine.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
 -r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
--r:E:/Programas/Unity/Data/Managed/UnityEditor.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
 -define:UNITY_STANDALONE_WIN
 -define:ENABLE_MICROPHONE
 -define:ENABLE_TEXTUREID_MAP
@@ -166,10 +166,10 @@ Assets/Scripts/Garrulo.cs
 Assets/Scripts/GarruloLWF.cs
 Assets/Scripts/GirlfriendLWF.cs
 Assets/Scripts/Launcher.cs
-Assets/Scripts/Moscon.cs
 Assets/Scripts/MosconAbstract.cs
 Assets/Scripts/Torrente.cs
 Assets/Scripts/TorrenteLWF.cs
+Assets/Scripts/WeaponLauncher.cs
 Assets/TK2DROOT/tk2d/Code/Camera/tk2dCamera.cs
 Assets/TK2DROOT/tk2d/Code/Camera/tk2dCameraAnchor.cs
 Assets/TK2DROOT/tk2d/Code/Camera/tk2dCameraUtil.cs
@@ -248,5 +248,5 @@ Assets/TK2DROOT/tk2d_demo/tk2dDemoButtonController.cs
 Assets/TK2DROOT/tk2d_demo/tk2dDemoCameraController.cs
 Assets/TK2DROOT/tk2d_demo/tk2dDemoReloadController.cs
 Assets/TK2DROOT/tk2d_demo/tk2dDemoRuntimeSpriteController.cs
--r:E:/Programas/Unity/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll
--r:E:/Programas/Unity/Data/Mono\lib/mono/unity\System.Xml.Linq.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"

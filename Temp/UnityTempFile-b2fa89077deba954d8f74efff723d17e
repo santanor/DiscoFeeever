@@ -2,8 +2,8 @@
 -target:library
 -nowarn:0169
 -out:Temp/Assembly-CSharp-firstpass.dll
--r:E:/Programas/Unity/Data/Managed/UnityEngine.dll
--r:E:/Programas/Unity/Data/Managed/UnityEditor.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
 -define:UNITY_STANDALONE_WIN
 -define:ENABLE_MICROPHONE
 -define:ENABLE_TEXTUREID_MAP
@@ -77,5 +77,5 @@ Assets/Plugins/lwf/renderer/drawmesh/lwf_drawmesh_bitmap.cs
 Assets/Plugins/lwf/renderer/drawmesh/lwf_drawmesh_factory.cs
 Assets/Plugins/lwf/wrapper/LWFObject.cs
 Assets/Plugins/lwf/wrapper/LWFPlayer.cs
--r:E:/Programas/Unity/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll
--r:E:/Programas/Unity/Data/Mono\lib/mono/unity\System.Xml.Linq.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
