@@ -152,7 +152,11 @@ public class LWFObject : MonoBehaviour
 		LWFCallback lwfDestroyCallback = null,
 		LWFDataLoader lwfDataLoader = null,
 		TextureLoader textureLoader = null,
-		TextureUnloader textureUnloader = null)
+		TextureUnloader textureUnloader = null
+#if LWF_USE_LUA
+		, object luaState = null
+#endif
+		)
 	{
 		lwfName = path;
 		callUpdate = autoUpdate;
@@ -187,7 +191,11 @@ public class LWFObject : MonoBehaviour
 				texturePrefix, fontPrefix, textureLoader, textureUnloader);
 		}
 
+#if LWF_USE_LUA
+		lwf = new LWF.LWF(data, factory, luaState);
+#else
 		lwf = new LWF.LWF(data, factory);
+#endif
 
 		OnLoad();
 
@@ -298,34 +306,30 @@ public class LWFObject : MonoBehaviour
 		UpdateLWF(Time.deltaTime, pointX, pointY, press, release);
 	}
 
-	public void UseTextWithMovie(string instanceName)
-	{
-		AddLoadCallback((o) => factory.UseTextWithMovie(instanceName));
-	}
-
 	public void SetText(
 		string instanceName, string textName, string text)
 	{
-		AddLoadCallback((o) => factory.SetText(instanceName, textName, text));
+		AddLoadCallback((o) =>
+			lwf.SetText(instanceName + "." + textName, text));
 	}
 
 	public void SetText(string textName, string text)
 	{
-		AddLoadCallback((o) => factory.SetText(textName, text));
+		AddLoadCallback((o) => lwf.SetText(textName, text));
 	}
 
 	public string GetText(string instanceName, string textName)
 	{
 		if (lwf == null)
 			return null;
-		return factory.GetText(instanceName, textName);
+		return lwf.GetText(instanceName + "." + textName);
 	}
 
 	public string GetText(string textName)
 	{
 		if (lwf == null)
 			return null;
-		return factory.GetText(textName);
+		return lwf.GetText(textName);
 	}
 
 	public Vector3 WorldToLWFPoint(Vector3 worldPoint)

@@ -123,13 +123,13 @@ public class JSONObject {
 				}
 			}
 			if(str.Length > 0) {
-				if(string.Compare(str, "true", true) == 0) {
+				if(str.Equals("true")) {
 					type = Type.BOOL;
 					b = true;
-				} else if(string.Compare(str, "false", true) == 0) {
+				} else if(str.Equals("false")) {
 					type = Type.BOOL;
 					b = false;
-				} else if(string.Compare(str, "null", true) == 0) {
+				} else if(str.Equals("null")) {
 					type = Type.NULL;
 #if USEFLOAT
 				} else if(str == INFINITY) {

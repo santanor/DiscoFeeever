@@ -23,6 +23,7 @@ using System.Collections.Generic;
 
 namespace LWF {
 
+using Constant = Format.Constant;
 using Type = Format.Object.Type;
 using EventHandler = Action;
 using EventHandlerList = List<Action>;
@@ -37,6 +38,7 @@ using AttachedLWFList = SortedDictionary<int, LWFContainer>;
 using AttachedLWFDescendingList = SortedDictionary<int, int>;
 using DetachDict = Dictionary<string, bool>;
 using Inspector = System.Action<Object, int, int, int>;
+using Texts = Dictionary<string, bool>;
 
 public partial class Movie : IObject
 {
@@ -54,6 +56,7 @@ public partial class Movie : IObject
 	private AttachedLWFList m_attachedLWFList;
 	private AttachedLWFDescendingList m_attachedLWFDescendingList;
 	private DetachDict m_detachedLWFs;
+	private Texts m_texts;
 	private string m_attachName;
 	private int m_totalFrames;
 	private int m_currentFrameInternal;
@@ -66,6 +69,7 @@ public partial class Movie : IObject
 	private int m_lastControlAnimationOffset;
 	private int m_movieExecCount;
 	private int m_postExecCount;
+	private int m_blendMode;
 	private bool m_active;
 	private bool m_visible;
 	private bool m_playing;
@@ -77,6 +81,9 @@ public partial class Movie : IObject
 	private bool m_skipped;
 	private bool m_attachMovieExeced;
 	private bool m_attachMoviePostExeced;
+#if LWF_USE_LUA
+	private bool m_isRoot;
+#endif
 	private Matrix m_matrix0;
 	private Matrix m_matrix1;
 	private ColorTransform m_colorTransform0;
@@ -84,9 +91,9 @@ public partial class Movie : IObject
 
 	private Property m_property;
 
-	public Movie(LWF lwf, Movie parent, int objId,
-			int instId, int matrixId = 0, int colorTransformId = 0,
-			bool attached = false, MovieEventHandlers handler = null)
+	public Movie(LWF lwf, Movie parent, int objId, int instId, int matrixId = 0,
+			int colorTransformId = 0, bool attached = false,
+			MovieEventHandlers handler = null, string n = null)
 		: base(lwf, parent,
 			attached ? Type.ATTACHEDMOVIE : Type.MOVIE, objId, instId)
 	{
@@ -94,6 +101,9 @@ public partial class Movie : IObject
 		m_matrixId = matrixId;
 		m_colorTransformId = colorTransformId;
 		m_totalFrames = m_data.frames;
+
+		if (!String.IsNullOrEmpty(n))
+			m_name = n;
 		m_instanceHead = null;
 		m_instanceTail = null;
 		m_currentFrameInternal = -1;
@@ -114,6 +124,7 @@ public partial class Movie : IObject
 		m_attachMoviePostExeced = false;
 		m_movieExecCount = -1;
 		m_postExecCount = -1;
+		m_blendMode = (int)Constant.BLEND_MODE_NORMAL;
 
 		m_property = new Property(lwf);
 
@@ -124,6 +135,20 @@ public partial class Movie : IObject
 
 		m_displayList = new Object[m_data.depths];
 
+#if LWF_USE_LUA
+		m_isRoot = objId == lwf.data.header.rootMovieId;
+		if (m_isRoot) {
+			lwf.GetFunctionsLua(objId, out m_rootLoadFunc, out m_rootPostLoadFunc,
+				out m_rootUnloadFunc, out m_rootEnterFrameFunc, true);
+		}
+		lwf.GetFunctionsLua(objId,
+			out m_loadFunc, out m_postLoadFunc, out m_unloadFunc, out m_enterFrameFunc, false);
+
+		if (m_isRoot && !String.IsNullOrEmpty(m_rootLoadFunc))
+			lwf.CallFunctionLua(m_rootLoadFunc, this);
+		if (m_loadFunc != String.Empty)
+			lwf.CallFunctionLua(m_loadFunc, this);
+#endif
 		PlayAnimation(ClipEvent.LOAD);
 
 		m_eventHandlers = new EventHandlerDictionary();
@@ -145,6 +170,10 @@ public partial class Movie : IObject
 		get {return m_depth;}
 		set {m_depth = value;}
 	}
+	public int blendMode {
+		get {return m_blendMode;}
+		set {m_blendMode = value;}
+	}
 	public int currentFrame {get {return m_currentFrameInternal + 1;}}
 	public int totalFrames {get {return m_totalFrames;}}
 	public bool playing {get {return m_playing;}}
@@ -153,6 +182,7 @@ public partial class Movie : IObject
 
 	public void SetHandlers(MovieEventHandlers handler)
 	{
+		m_handler.Clear();
 		m_handler.Add(handler);
 	}
 
@@ -161,7 +191,14 @@ public partial class Movie : IObject
 		float px;
 		float py;
 		Matrix invert = new Matrix();
-		Utility.InvertMatrix(invert, m_matrix);
+		Matrix m;
+		if (m_property.hasMatrix) {
+			m = new Matrix();
+			m = Utility.CalcMatrix(m, m_matrix, m_property.matrix);
+		} else {
+			m = m_matrix;
+		}
+		Utility.InvertMatrix(invert, m);
 		Utility.CalcMatrixToPoint(out px, out py, point.x, point.y, invert);
 		return new Point(px, py);
 	}
@@ -170,12 +207,19 @@ public partial class Movie : IObject
 	{
 		float px;
 		float py;
-		Utility.CalcMatrixToPoint(out px, out py, point.x, point.y, m_matrix);
+		Matrix m;
+		if (m_property.hasMatrix) {
+			m = new Matrix();
+			m = Utility.CalcMatrix(m, m_matrix, m_property.matrix);
+		} else {
+			m = m_matrix;
+		}
+		Utility.CalcMatrixToPoint(out px, out py, point.x, point.y, m);
 		return new Point(px, py);
 	}
 
 	private void ExecObject(int dlDepth, int objId,
-		int matrixId, int colorTransformId, int instId)
+		int matrixId, int colorTransformId, int instId, int dlBlendMode)
 	{
 		// Ignore error
 		if (objId == -1)
@@ -188,6 +232,8 @@ public partial class Movie : IObject
 		if (obj != null && (obj.type != (Type)dataObject.objectType ||
 				obj.objectId != dataObjectId || (obj.IsMovie() &&
 				((IObject)obj).instanceId != instId))) {
+			if (m_texts != null && obj.IsText())
+				EraseText(obj.objectId);
 			obj.Destroy();
 			obj = null;
 		}
@@ -206,6 +252,7 @@ public partial class Movie : IObject
 			case Type.MOVIE:
 				obj = new Movie(m_lwf, this,
 					dataObjectId, instId, matrixId, colorTransformId);
+				((Movie)obj).blendMode = dlBlendMode;
 				break;
 
 			case Type.BITMAP:
@@ -217,7 +264,7 @@ public partial class Movie : IObject
 				break;
 
 			case Type.TEXT:
-				obj = new Text(m_lwf, this, dataObjectId);
+				obj = new Text(m_lwf, this, dataObjectId, instId);
 				break;
 
 			case Type.PARTICLE:
@@ -241,6 +288,9 @@ public partial class Movie : IObject
 			if (obj.IsButton())
 				m_hasButton = true;
 		}
+
+		if (m_texts != null && obj.IsText())
+			InsertText(obj.objectId);
 
 		m_displayList[dlDepth] = obj;
 		obj.execCount = m_movieExecCount;
@@ -342,7 +392,7 @@ public partial class Movie : IObject
 							Format.Place p =
 								data.places[control.controlId];
 							ExecObject(p.depth, p.objectId,
-								p.matrixId, 0, p.instanceId);
+								p.matrixId, 0, p.instanceId, p.blendMode);
 						}
 						break;
 
@@ -352,7 +402,7 @@ public partial class Movie : IObject
 								data.controlMoveMs[control.controlId];
 							Format.Place p = data.places[ctrl.placeId];
 							ExecObject(p.depth, p.objectId,
-								ctrl.matrixId, 0, p.instanceId);
+								ctrl.matrixId, 0, p.instanceId, p.blendMode);
 						}
 						break;
 
@@ -362,7 +412,8 @@ public partial class Movie : IObject
 								data.controlMoveCs[control.controlId];
 							Format.Place p = data.places[ctrl.placeId];
 							ExecObject(p.depth, p.objectId, p.matrixId,
-								ctrl.colorTransformId, p.instanceId);
+								ctrl.colorTransformId, p.instanceId,
+								p.blendMode);
 						}
 						break;
 
@@ -372,7 +423,8 @@ public partial class Movie : IObject
 								data.controlMoveMCs[control.controlId];
 							Format.Place p = data.places[ctrl.placeId];
 							ExecObject(p.depth, p.objectId, ctrl.matrixId,
-								ctrl.colorTransformId, p.instanceId);
+								ctrl.colorTransformId, p.instanceId,
+								p.blendMode);
 						}
 						break;
 
@@ -389,6 +441,8 @@ public partial class Movie : IObject
 				for (int dlDepth = 0; dlDepth < m_data.depths; ++dlDepth) {
 					Object obj = m_displayList[dlDepth];
 					if (obj != null && obj.execCount != m_movieExecCount) {
+						if (m_texts != null && obj.IsText())
+							EraseText(obj.objectId);
 						obj.Destroy();
 						m_displayList[dlDepth] = null;
 					}
@@ -436,6 +490,12 @@ public partial class Movie : IObject
 
 			if (!m_postLoaded) {
 				m_postLoaded = true;
+#if LWF_USE_LUA
+			if (m_isRoot && !String.IsNullOrEmpty(m_rootPostLoadFunc))
+				lwf.CallFunctionLua(m_rootPostLoadFunc, this);
+			if (m_postLoadFunc != String.Empty)
+				lwf.CallFunctionLua(m_postLoadFunc, this);
+#endif
 				if (!m_handler.Empty())
 					m_handler.Call(EventType.POSTLOAD, this);
 			}
@@ -459,6 +519,12 @@ public partial class Movie : IObject
 				m_jumped = false;
 		}
 
+#if LWF_USE_LUA
+		if (m_isRoot && !String.IsNullOrEmpty(m_rootEnterFrameFunc))
+			lwf.CallFunctionLua(m_rootEnterFrameFunc, this);
+		if (m_enterFrameFunc != String.Empty)
+			lwf.CallFunctionLua(m_enterFrameFunc, this);
+#endif
 		PlayAnimation(ClipEvent.ENTERFRAME);
 		if (!m_handler.Empty())
 			m_handler.Call(EventType.ENTERFRAME, this);
@@ -560,18 +626,6 @@ public partial class Movie : IObject
 		if (!m_visible || !m_active || !m_hasButton)
 			return;
 
-		if (m_attachedLWFs != null) {
-			foreach (LWFContainer lwfContainer in m_attachedLWFList.Values)
-				if (lwfContainer != null)
-					lwfContainer.LinkButton();
-		}
-
-		if (m_attachedMovies != null) {
-			foreach (Movie movie in m_attachedMovieList.Values)
-				if (movie != null && movie.m_hasButton)
-					movie.LinkButton();
-		}
-
 		for (int dlDepth = 0; dlDepth < m_data.depths; ++dlDepth) {
 			Object obj = m_displayList[dlDepth];
 			if (obj != null) {
@@ -584,12 +638,41 @@ public partial class Movie : IObject
 				}
 			}
 		}
+
+		if (m_attachedMovies != null) {
+			foreach (Movie movie in m_attachedMovieList.Values)
+				if (movie != null && movie.m_hasButton)
+					movie.LinkButton();
+		}
+
+		if (m_attachedLWFs != null) {
+			foreach (LWFContainer lwfContainer in m_attachedLWFList.Values)
+				if (lwfContainer != null)
+					lwfContainer.LinkButton();
+		}
 	}
 
 	public override void Render(bool v, int rOffset)
 	{
 		if (!m_visible || !m_active)
 			v = false;
+
+		bool useBlendMode = false;
+		bool useMaskMode = false;
+		if (m_blendMode != (int)Constant.BLEND_MODE_NORMAL) {
+			switch (m_blendMode) {
+			case (int)Constant.BLEND_MODE_ADD:
+				m_lwf.BeginBlendMode(m_blendMode);
+				useBlendMode = true;
+				break;
+			case (int)Constant.BLEND_MODE_ERASE:
+			case (int)Constant.BLEND_MODE_LAYER:
+			case (int)Constant.BLEND_MODE_MASK:
+				m_lwf.BeginMaskMode(m_blendMode);
+				useMaskMode = true;
+				break;
+			}
+		}
 
 		if (v && !m_handler.Empty())
 			m_handler.Call(EventType.RENDER, this);
@@ -623,6 +706,11 @@ public partial class Movie : IObject
 				}
 			}
 		}
+
+		if (useBlendMode)
+			m_lwf.EndBlendMode();
+		if (useMaskMode)
+			m_lwf.EndMaskMode();
 	}
 
 #if UNITY_EDITOR
@@ -714,11 +802,20 @@ public partial class Movie : IObject
 			m_attachedLWFList = null;
 		}
 
+#if LWF_USE_LUA
+		if (m_isRoot && !String.IsNullOrEmpty(m_rootUnloadFunc))
+			lwf.CallFunctionLua(m_rootUnloadFunc, this);
+		if (m_unloadFunc != String.Empty)
+			lwf.CallFunctionLua(m_unloadFunc, this);
+#endif
 		PlayAnimation(ClipEvent.UNLOAD);
 
 		if (!m_handler.Empty())
 			m_handler.Call(EventType.UNLOAD, this);
 
+#if LWF_USE_LUA
+		lwf.DestroyMovieLua(this);
+#endif
 		m_displayList = null;
 		m_property = null;
 
@@ -747,6 +844,9 @@ public partial class Movie : IObject
 
 	public Movie SearchMovieInstance(int stringId, bool recursive = true)
 	{
+		if (stringId == -1)
+			return null;
+
 		for (IObject instance = m_instanceHead; instance != null;
 				instance = instance.linkInstance) {
 			if (instance.IsMovie() && m_lwf.GetInstanceNameStringId(
@@ -764,12 +864,45 @@ public partial class Movie : IObject
 
 	public Movie SearchMovieInstance(string instanceName, bool recursive = true)
 	{
-		return SearchMovieInstance(m_lwf.GetStringId(instanceName), recursive);
+		int stringId = m_lwf.GetStringId(instanceName);
+		if (stringId != -1)
+			return SearchMovieInstance(stringId, recursive);
+
+		if (m_attachedMovies != null) {
+			foreach (Movie movie in m_attachedMovieList.Values) {
+				if (movie != null) {
+					if (movie.attachName == instanceName)
+						return movie;
+					else if (recursive) {
+						Movie descendant = movie.SearchMovieInstance(instanceName, recursive);
+						if (descendant != null)
+							return descendant;
+					}
+				}
+			}
+		}
+
+		if (m_attachedLWFs != null) {
+			foreach (LWFContainer lwfContainer in m_attachedLWFList.Values) {
+				if (lwfContainer != null) {
+					LWF child = lwfContainer.child;
+					if (child.attachName == instanceName) {
+						return child.rootMovie;
+					} else if (recursive) {
+						Movie descendant = child.rootMovie.SearchMovieInstance(instanceName, recursive);
+						if (descendant != null)
+							return descendant;
+					}
+				}
+			}
+		}
+
+		return null;
 	}
 
 	public Movie this[string instanceName]
 	{
-		get {return SearchMovieInstance(instanceName);}
+		get {return SearchMovieInstance(instanceName, false);}
 	}
 
 	public Movie SearchMovieInstanceByInstanceId(int instId, bool recursive)
@@ -790,6 +923,9 @@ public partial class Movie : IObject
 
 	public Button SearchButtonInstance(int stringId, bool recursive = true)
 	{
+		if (stringId == -1)
+			return null;
+
 		for (IObject instance = m_instanceHead; instance != null;
 				instance = instance.linkInstance) {
 			if (instance.IsButton() && m_lwf.GetInstanceNameStringId(
@@ -808,7 +944,32 @@ public partial class Movie : IObject
 	public Button SearchButtonInstance(
 		string instanceName, bool recursive = true)
 	{
-		return SearchButtonInstance(m_lwf.GetStringId(instanceName), recursive);
+		int stringId = m_lwf.GetStringId(instanceName);
+		if (stringId != -1)
+			return SearchButtonInstance(stringId, recursive);
+
+		if (m_attachedMovies != null && recursive) {
+			foreach (Movie movie in m_attachedMovieList.Values) {
+				if (movie != null) {
+					Button button = movie.SearchButtonInstance(instanceName, recursive);
+					if (button != null)
+						return button;
+				}
+			}
+		}
+
+		if (m_attachedLWFs != null) {
+			foreach (LWFContainer lwfContainer in m_attachedLWFList.Values) {
+				if (lwfContainer != null) {
+					LWF child = lwfContainer.child;
+					Button button = child.rootMovie.SearchButtonInstance(instanceName, recursive);
+					if (button != null)
+						return button;
+				}
+			}
+		}
+
+		return null;
 	}
 
 	public Button SearchButtonInstanceByInstanceId(int instId, bool recursive)
@@ -825,6 +986,37 @@ public partial class Movie : IObject
 			}
 		}
 		return null;
+	}
+
+	public void InsertText(int objId)
+	{
+		Format.Text text = lwf.data.texts[objId];
+		if (text.nameStringId != -1)
+			m_texts[lwf.data.strings[text.nameStringId]] = true;
+	}
+
+	public void EraseText(int objId)
+	{
+		Format.Text text = lwf.data.texts[objId];
+		if (text.nameStringId != -1)
+			m_texts.Remove(lwf.data.strings[text.nameStringId]);
+	}
+
+	public bool SearchText(string textName)
+	{
+		if (m_texts != null) {
+			m_texts = new Texts();
+			for (int dlDepth = 0; dlDepth < data.depths; ++dlDepth) {
+				Object obj = m_displayList[dlDepth];
+				if (obj != null && obj.IsText())
+					InsertText(obj.objectId);
+			}
+		}
+
+		bool v;
+		if (m_texts.TryGetValue(textName, out v))
+			return true;
+		return false;
 	}
 
 	public void AddEventHandler(string eventName, EventHandler eventHandler)

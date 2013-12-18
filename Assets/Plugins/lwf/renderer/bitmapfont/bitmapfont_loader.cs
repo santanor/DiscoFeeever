@@ -82,7 +82,12 @@ public partial class Data
 				break;
 			bs.Add(b);
 		}
-		textureName = Encoding.UTF8.GetString(bs.ToArray());
+			byte[] array = bs.ToArray();
+			Decoder decoder = Encoding.UTF8.GetDecoder();
+			int size = decoder.GetCharCount(array,0,array.Length);
+			char[] chars = new char[size];
+			int charLength = decoder.GetChars(array,0,array.Length,chars,0);
+			textureName = new string(chars, 0, charLength);
 	}
 }
 

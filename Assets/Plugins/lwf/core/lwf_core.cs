@@ -34,6 +34,24 @@ using AllowButtonList = Dictionary<int, bool>;
 using DenyButtonList = Dictionary<int, bool>;
 using ExecHandler = Action<LWF>;
 using ExecHandlerList = List<Action<LWF>>;
+using TextDictionary = Dictionary<string, TextDictionaryItem>;
+using BlendModes = List<int>;
+using MaskModes = List<int>;
+
+public class TextDictionaryItem
+{
+	public string text;
+	public TextRenderer renderer;
+
+	public TextDictionaryItem(string t) {
+		text = t;
+	}
+
+	public TextDictionaryItem(string t, TextRenderer r) {
+		text = t;
+		renderer = r;
+	}
+}
 
 public partial class LWF
 {
@@ -42,6 +60,8 @@ public partial class LWF
 		LWF,
 	}
 
+	private static int m_instanceOffset = 0;
+	private static int m_iObjectOffset = 0;
 	private static float ROUND_OFF_TICK_RATE = 0.05f;
 
 	private Data m_data;
@@ -59,6 +79,9 @@ public partial class LWF
 	private AllowButtonList m_allowButtonList;
 	private DenyButtonList m_denyButtonList;
 	private ExecHandlerList m_execHandlers;
+	private TextDictionary m_textDictionary;
+	private BlendModes m_blendModes;
+	private MaskModes m_maskModes;
 	private int m_frameRate;
 	private int m_execLimit;
 	private int m_renderingIndex;
@@ -67,6 +90,7 @@ public partial class LWF
 	private int m_depth;
 	private int m_execCount;
 	private int m_updateCount;
+	private int m_instanceId;
 	private double m_time;
 	private float m_progress;
 	private float m_tick;
@@ -87,6 +111,8 @@ public partial class LWF
 	private Matrix m_matrixIdentity;
 	private ColorTransform m_colorTransform;
 	private ColorTransform m_colorTransformIdentity;
+	private bool m_alive;
+	private int m_eventOffset;
 
 	public Data data {get {return m_data;}}
 	public bool interactive {get; set;}
@@ -117,11 +143,13 @@ public partial class LWF
 	public int renderingCount {get {return m_renderingCount;}}
 	public int execCount {get {return m_execCount;}}
 	public int updateCount {get {return m_updateCount;}}
+	public int instanceId {get {return m_instanceId;}}
 	public float width {get {return m_data.header.width;}}
 	public float height {get {return m_data.header.height;}}
 	public double time {get {return m_time;}}
 	public float tick {get {return m_tick;}}
 	public float thisTick {get {return m_thisTick;}}
+	public bool alive {get {return m_alive;}}
 	public Movie parent {
 		get {return m_parent;}
 		set {m_parent = value;}
@@ -146,7 +174,11 @@ public partial class LWF
 	}
 	public bool intercepted {get {return interactive && m_intercepted;}}
 
-	public LWF(Data lwfData, IRendererFactory rendererFactory = null)
+#if LWF_USE_LUA
+	public LWF(Data lwfData, IRendererFactory r, object l = null)
+#else
+	public LWF(Data lwfData, IRendererFactory r)
+#endif
 	{
 		m_data = lwfData;
 
@@ -162,6 +194,13 @@ public partial class LWF
 		m_pointX = Single.MinValue;
 		m_pointY = Single.MinValue;
 		m_pressing = false;
+		m_instanceId = ++m_instanceOffset;
+		m_alive = true;
+#if LWF_USE_LUA
+		m_luaState = l;
+		m_instanceIdString = instanceId.ToString();
+		InitLua();
+#endif
 
 		if (!interactive && m_data.frames.Length == 1)
 			DisableExec();
@@ -172,15 +211,18 @@ public partial class LWF
 		m_movieCommands = new MovieCommands();
 		m_programObjectConstructors =
 			new ProgramObjectConstructor[m_data.programObjects.Length];
+		m_textDictionary = new TextDictionary();
 
 		m_matrix = new Matrix();
 		m_matrixIdentity = new Matrix();
 		m_colorTransform = new ColorTransform();
 		m_colorTransformIdentity = new ColorTransform();
+		m_blendModes = new BlendModes();
+		m_maskModes = new MaskModes();
 
 		Init();
 
-		SetRendererFactory(rendererFactory);
+		SetRendererFactory(r);
 	}
 
 	public void SetRendererFactory(IRendererFactory rendererFactory = null)
@@ -242,6 +284,34 @@ public partial class LWF
 		m_renderingIndex += count;
 		m_renderingIndexOffsetted += count;
 		return m_renderingIndex;
+	}
+
+	public void BeginBlendMode(int blendMode)
+	{
+		m_blendModes.Add(blendMode);
+		m_rendererFactory.SetBlendMode(blendMode);
+	}
+
+	public void EndBlendMode()
+	{
+		m_blendModes.RemoveAt(m_blendModes.Count - 1);
+		m_rendererFactory.SetBlendMode(m_blendModes.Count > 0 ?
+			m_blendModes[m_blendModes.Count - 1] :
+			(int)Format.Constant.BLEND_MODE_NORMAL);
+	}
+
+	public void BeginMaskMode(int maskMode)
+	{
+		m_maskModes.Add(maskMode);
+		m_rendererFactory.SetMaskMode(maskMode);
+	}
+
+	public void EndMaskMode()
+	{
+		m_maskModes.RemoveAt(m_maskModes.Count - 1);
+		m_rendererFactory.SetMaskMode(m_maskModes.Count > 0 ?
+			m_maskModes[m_maskModes.Count - 1] :
+			(int)Format.Constant.BLEND_MODE_NORMAL);
 	}
 
 	public void SetAttachVisible(bool visible)
@@ -458,6 +528,15 @@ public partial class LWF
 	public void Destroy()
 	{
 		m_rootMovie.Destroy();
+#if LWF_USE_LUA
+		DestroyLua();
+#endif
+		m_alive = false;
+	}
+
+	public int GetIObjectOffset()
+	{
+		return ++m_iObjectOffset;
 	}
 
 	public Movie SearchMovieInstance(int stringId)
@@ -482,7 +561,11 @@ public partial class LWF
 			return m;
 		}
 
-		return SearchMovieInstance(GetStringId(instanceName));
+		int stringId = GetStringId(instanceName);
+		if (stringId == -1)
+			return rootMovie.SearchMovieInstance(instanceName, true);
+
+		return SearchMovieInstance(stringId);
 	}
 
 	public Movie this[string instanceName]
@@ -529,7 +612,11 @@ public partial class LWF
 			return null;
 		}
 
-		return SearchButtonInstance(GetStringId(instanceName));
+		int stringId = GetStringId(instanceName);
+		if (stringId == -1)
+			return rootMovie.SearchButtonInstance(instanceName, true);
+
+		return SearchButtonInstance(stringId);
 	}
 
 	public Button SearchButtonInstanceByInstanceId(int instId)
@@ -739,6 +826,65 @@ public partial class LWF
 	{
 		ClearExecHandler();
 		AddExecHandler(execHandler);
+	}
+
+	public void SetText(string textName, string text)
+	{
+		TextDictionaryItem item;
+		if (!m_textDictionary.TryGetValue(textName, out item)) {
+			m_textDictionary[textName] = new TextDictionaryItem(text);
+		} else {
+			if (item.renderer != null)
+				item.renderer.SetText(text);
+			item.text = text;
+		}
+	}
+
+	public string GetText(string textName)
+	{
+		TextDictionaryItem item;
+		if (m_textDictionary.TryGetValue(textName, out item))
+			return item.text;
+		return null;
+	}
+
+	public void SetTextRenderer(string fullPath,
+		string textName, string text, TextRenderer textRenderer)
+	{
+		bool setText = false;
+		string fullName = fullPath + "." + textName;
+		TextDictionaryItem item;
+		if (m_textDictionary.TryGetValue(fullName, out item)) {
+			item.renderer = textRenderer;
+			if (!String.IsNullOrEmpty(item.text)) {
+				textRenderer.SetText(item.text);
+				setText = true;
+			}
+		} else {
+			m_textDictionary[fullName] =
+				new TextDictionaryItem(text, textRenderer);
+		}
+
+		if (m_textDictionary.TryGetValue(textName, out item)) {
+			item.renderer = textRenderer;
+			if (!setText && !String.IsNullOrEmpty(item.text)) {
+				textRenderer.SetText(item.text);
+				setText = true;
+			}
+		} else {
+			m_textDictionary[textName] =
+				new TextDictionaryItem(text, textRenderer);
+		}
+
+		if (!setText)
+			textRenderer.SetText(text);
+	}
+
+	public void ClearTextRenderer(string textName)
+	{
+		TextDictionaryItem item;
+		if (!m_textDictionary.TryGetValue(textName, out item))
+			item.renderer = null;
 	}
 }
 

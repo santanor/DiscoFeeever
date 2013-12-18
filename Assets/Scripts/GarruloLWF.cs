@@ -16,7 +16,7 @@ public class GarruloLWF : LWFObject
             UseDrawMeshRenderer();
 
         Load(lwfName, dir);
-        Scale(0.33f, 0.33f);
+        Scale(0.13f, 0.13f);
     }
 
 }
