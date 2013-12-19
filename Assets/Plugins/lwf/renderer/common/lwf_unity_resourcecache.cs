@@ -329,7 +329,7 @@ public class ResourceCache
 		string cacheName = string.Format("{0}/{1}", lwfName, bitmapExId);
 		if (m_meshCache.TryGetValue(cacheName, out item)) {
 			if (item.Unref() <= 0) {
-				Mesh.Destroy(item.Entity().mesh);
+				Mesh.DestroyImmediate(item.Entity().mesh);
 				m_meshCache.Remove(cacheName);
 			}
 		}

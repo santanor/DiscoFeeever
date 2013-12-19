@@ -13,7 +13,6 @@ public class Weapon : MonoBehaviour {
 	public void FollowTouch(Vector3 position)
 	{
 		this.gameObject.transform.position = position;
-
 	}
 
 	public void DropWeapon(Vector3 position,int cellWidth, int cellHeight)

@@ -5,6 +5,8 @@ public class WeaponController : MonoBehaviour {
 
 	private int cellWidth;
 	private int cellHeight;
+	private Weapon weaponTouched;
+	private bool selected;
 
 	// Use this for initialization
 	void Start () {
@@ -19,42 +21,21 @@ public class WeaponController : MonoBehaviour {
 		{
 			switch (touch.phase)
 			{				
-				case TouchPhase.Moved:
-				ManagePhaseMoved(touch);
-				break;
-				
-				case TouchPhase.Ended:
-				ManagePhaseEnd(touch);
+				case TouchPhase.Began:
+				ManagePhaseBegan(touch);
 				break;
 			}
 		}
 	}
 
-	private void ManagePhaseMoved(Touch touch)
+	private void ManagePhaseBegan(Touch touch)
 	{
 		var ray = Camera.main.ScreenPointToRay(touch.position);
-		RaycastHit2D hit = Physics2D.Raycast(ray.origin, -Vector2.up);
-		if(hit != null)
-		{
-			if(hit.collider.gameObject.tag == "Weapon")
-			{
-				var ray2 = Camera.main.ScreenPointToRay(touch.position);
-				 hit.collider.gameObject.GetComponent<Weapon>().FollowTouch(ray2.origin);
-			}
-		}
-	}
+		RaycastHit2D hit;
+		hit = Physics2D.Raycast (ray.origin, -Vector2.up, 1);
+		if (hit.collider != null && hit.collider.gameObject.tag == "Weapon")
+			weaponTouched = hit.collider.gameObject.GetComponent<Weapon> ();
+						
 
-	private void ManagePhaseEnd(Touch touch)
-	{
-		var ray = Camera.main.ScreenPointToRay(touch.position);
-		RaycastHit2D hit = Physics2D.Raycast(ray.origin, -Vector2.up);
-		if(hit != null)
-		{
-			if(hit.collider.gameObject.tag == "Weapon")
-			{
-				var ray2 = Camera.main.ScreenPointToRay(touch.position);
-				hit.collider.gameObject.GetComponent<Weapon>().DropWeapon(ray2.origin, cellWidth, cellHeight);
-			}
-		}
 	}
 }
