@@ -12,30 +12,35 @@ public class WeaponController : MonoBehaviour {
 	void Start () {
 		cellWidth = (int)(Screen.width * 0.0625f);
 		cellHeight = (int)(Screen.height * 0.2f);
+		selected = false;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		foreach(Touch touch in Input.touches)
-		{
-			switch (touch.phase)
-			{				
-				case TouchPhase.Began:
-				ManagePhaseBegan(touch);
-				break;
-			}
-		}
+		if(Input.touchCount == 1)
+			if(Input.GetTouch(0).phase == TouchPhase.Ended)
+				ManagePhaseEnd(Input.GetTouch(0));
 	}
 
-	private void ManagePhaseBegan(Touch touch)
+	private void ManagePhaseEnd(Touch touch)
 	{
-		var ray = Camera.main.ScreenPointToRay(touch.position);
-		RaycastHit2D hit;
-		hit = Physics2D.Raycast (ray.origin, -Vector2.up, 1);
-		if (hit.collider != null && hit.collider.gameObject.tag == "Weapon")
-			weaponTouched = hit.collider.gameObject.GetComponent<Weapon> ();
-						
-
+		if(!selected)
+		{
+			var ray = Camera.main.ScreenPointToRay(touch.position);
+			RaycastHit2D hit;
+			hit = Physics2D.Raycast (ray.origin, -Vector2.up, 1);
+			if (hit.collider != null && hit.collider.gameObject.tag == "Weapon")
+			{
+				weaponTouched = hit.collider.gameObject.GetComponent<Weapon> ();
+				selected = true;
+			}
+		}
+		else if(selected)
+		{
+			var ray = Camera.main.ScreenPointToRay(touch.position);
+			weaponTouched.DropWeapon(ray.origin, cellWidth, cellHeight);
+			selected = false;
+		}
 	}
 }
