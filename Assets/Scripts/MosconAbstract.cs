@@ -33,6 +33,12 @@ public abstract class MosconAbstract : MonoBehaviour
 	{
 		this.gameObject.rigidbody2D.velocity = Vector3.left*GetVelocity();
 	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if(collider.gameObject.tag == "Limit")
+			this.rigidbody2D.velocity = Vector3.zero;
+	}
 }
 
 

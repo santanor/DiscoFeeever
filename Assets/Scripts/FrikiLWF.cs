@@ -14,6 +14,6 @@ public class FrikiLWF : LWFObject {
 			UseDrawMeshRenderer();
 		
 		Load(lwfName, dir);
-		Scale(0.13f, 0.13f);
+		Scale(0.10f, 0.10f);
 	}
 }

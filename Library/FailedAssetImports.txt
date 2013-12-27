@@ -1,1 +1,0 @@
-Assets/TK2DROOT/tk2d_demo/democameradata/source/window.png

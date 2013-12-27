@@ -229,7 +229,7 @@ public class ResourceCache
 				TextureContext context = item.Entity();
 				if (context.material.mainTexture != null)
 					context.unloader((Texture2D)context.material.mainTexture);
-				Material.Destroy(context.material);
+				Material.DestroyImmediate(context.material);
 				m_textureCache.Remove(cacheName);
 			}
 		}

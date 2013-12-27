@@ -9,7 +9,8 @@ public class WeaponController : MonoBehaviour {
 	private bool selected;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		cellWidth = (int)(Screen.width * 0.0625f);
 		cellHeight = (int)(Screen.height * 0.2f);
 		selected = false;
@@ -38,9 +39,9 @@ public class WeaponController : MonoBehaviour {
 		}
 		else if(selected)
 		{
-			var ray = Camera.main.ScreenPointToRay(touch.position);
-			weaponTouched.DropWeapon(ray.origin, cellWidth, cellHeight);
 			selected = false;
+			weaponTouched.DropWeapon(touch.position, cellWidth, cellHeight);
+
 		}
 	}
 }

@@ -2,18 +2,14 @@
 using System.Collections;
 
 public class Weapon : MonoBehaviour {
-		
-	public Rigidbody2D rigidbody;
+
+	[HideInInspector]
+	public int Position{get; set;}
+	public WeaponChooser chooser;
 
 	void Start()
 	{
-		DropWeapon (new Vector3 (654, 356, 1), 50, 96);
-	}
-
-	public void FollowTouch(Vector3 position)
-	{
-		Vector3 vector = new Vector3(position.x,position.y,1);
-		this.gameObject.transform.position = vector;
+		chooser = GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>();
 	}
 
 	public void DropWeapon(Vector3 position,int cellWidth, int cellHeight)
@@ -25,9 +21,18 @@ public class Weapon : MonoBehaviour {
 		Vector3 rayCellPosition = Camera.main.ViewportPointToRay(new Vector3(positionX,positionY,0)).origin;
 		Vector3 cellPosition = new Vector3(rayCellPosition.x, rayCellPosition.y,1);
 		this.transform.position = cellPosition;
-		print (positionX);
-		print (positionY);
-		print (cellPosition);
+		Invoke("ChangeTag",0.1f);
+		chooser.normalWeaponsUsed[this.Position] = false;
 	}
 
+	public void ChangeTag()
+	{
+		this.gameObject.tag = "WeaponDroped";
+	}
+
+	void OnCollisionEnter2D(Collision2D collider)
+	{
+		if(collider.collider.gameObject.tag == "WeaponDroped")
+			Destroy (collider.collider.gameObject);
+	}
 }

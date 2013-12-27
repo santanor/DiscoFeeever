@@ -14,7 +14,7 @@ public class ChuloLWF : LWFObject {
             UseDrawMeshRenderer();
 
         Load(lwfName, dir);
-        Scale(0.33f, 0.33f);
+        Scale(0.30f, 0.30f);
 	}
 	
 	

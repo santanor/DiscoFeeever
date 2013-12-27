@@ -15,7 +15,7 @@ public class GirlfriendLWF : LWFObject {
             UseDrawMeshRenderer();
 
         Load(lwfName, dir);
-        Scale(0.5f, 0.5f);
+        Scale(0.3f, 0.3f);
     }
 
 }
