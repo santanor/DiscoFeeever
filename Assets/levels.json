@@ -10,34 +10,42 @@
               "enemy": [
                 {
                   "-character": "garrulo",
-                  "-delay": "2"
+                  "-delay": "2",
+                  "-street": "0"
                 },
                 {
                   "-character": "chulo",
-                  "-delay": "3"
+                  "-delay": "3",
+                  "-street": "1"
                 },
                 {
-                  "-character": "torrente",
-                  "-delay": "4"
+                  "-character": "friki",
+                  "-delay": "4",
+                  "-street": "2"
                 },{
                   "-character": "garrulo",
-                  "-delay": "5"
+                  "-delay": "5",
+                  "-street": "3"
                 },
                 {
                   "-character": "chulo",
-                  "-delay": "5"
+                  "-delay": "5",
+                  "-street": "3"
                 },
                 {
                   "-character": "torrente",
-                  "-delay": "6"
+                  "-delay": "6",
+                  "-street": "2"
                 }, 
                 {
-                  "-character": "torrente",
-                  "-delay": "7"
+                  "-character": "friki",
+                  "-delay": "7",
+                  "-street": "0"
                 },
                 {
                   "-character": "chulo",
-                  "-delay": "7"
+                  "-delay": "7",
+                  "-street": "2"
                 }
               ]
             },

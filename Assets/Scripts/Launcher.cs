@@ -3,10 +3,6 @@ using System.Collections.Generic;
 
 public class Launcher : MonoBehaviour {
 
-	public Garrulo Garrulo;
-	public Friki Friki;
-	public Torrente Torrente;
-	public Chulo Chulo;
 	public int Level;
 	JSONObject jObject;
     List<MosconAbstract> moscones;
@@ -20,7 +16,7 @@ public class Launcher : MonoBehaviour {
 		System.IO.StreamReader reader = new System.IO.StreamReader(Application.dataPath+"/levels.json");
 		jObject = new JSONObject(reader.ReadToEnd());
 		foreach(var obj in jObject["levels"]["level"][Level]["implements"]["implement"][0]["enemy"].list)
-			CreateMoscon(obj[0].ToString().Replace("\"",""),obj[1].ToString().Replace("\"",""));
+			CreateMoscon(obj[0].ToString().Replace("\"",""),obj[1].ToString().Replace("\"",""), obj[2].ToString().Replace("\"",""));
 
 	}
 
@@ -38,29 +34,13 @@ public class Launcher : MonoBehaviour {
 			//Time.timeScale = 0;
 	}
 
-	private void CreateMoscon(string sprite, string time)
+	private void CreateMoscon(string sprite, string time, string street)
 	{
-        MosconAbstract gObject = null;
-		switch(sprite)
-		{
-			case "garrulo":
-				gObject = Garrulo;
-			break;
-			case "chulo":
-				gObject = Chulo;
-			break;
-			case "torrente":
-				gObject = Torrente;
-			break;
-			case "friki":
-				gObject = Friki;
-			break;
-		}
-
-		MosconAbstract clone = (MosconAbstract)Instantiate((Object)gObject);
-		clone.SetTimer(int.Parse(time));
-
-		moscones.Add(clone);
+		GameObject moscon = (GameObject)Instantiate(Resources.Load("Prefabs/Moscones/"+sprite));
+		Vector3 position = Camera.main.ViewportToWorldPoint( new Vector3(1f, (0.2f + (0.2f)*int.Parse(street)), 1f));
+		moscon.transform.position = position;
+		moscon.GetComponent<MosconAbstract>().SetTimer(int.Parse(time));
+		moscones.Add(moscon.GetComponent<MosconAbstract>());
 	}
 }
 

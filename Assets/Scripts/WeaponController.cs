@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class WeaponController : MonoBehaviour {
 
 	private int cellWidth;
 	private int cellHeight;
-	private Weapon weaponTouched;
+	private WeaponAbstract weaponTouched;
 	private bool selected;
 
 	// Use this for initialization
@@ -33,7 +33,7 @@ public class WeaponController : MonoBehaviour {
 			hit = Physics2D.Raycast (ray.origin, -Vector2.up, 1);
 			if (hit.collider != null && hit.collider.gameObject.tag == "Weapon")
 			{
-				weaponTouched = hit.collider.gameObject.GetComponent<Weapon> ();
+				weaponTouched = hit.collider.gameObject.GetComponent<WeaponAbstract> ();
 				selected = true;
 			}
 		}

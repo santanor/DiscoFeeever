@@ -5,8 +5,15 @@ public abstract class MosconAbstract : MonoBehaviour
 
 	public int MinVelocity {get; set;}
 	public int MaxVelocity {get; set;}
+	public int Velocity {get; set;}
 	public int Life {get; set;}
 	public int Timer {get; set;}
+
+	void Update()
+	{
+		if(this.Life <= 0)
+			Destroy(this.gameObject);
+	}
 
 	public void SetVelocity(int minVelocity, int maxVelocity)
 	{
@@ -16,7 +23,8 @@ public abstract class MosconAbstract : MonoBehaviour
 
 	public int GetVelocity()
 	{
-		return Random.Range(MinVelocity, MaxVelocity);
+		this.Velocity = Random.Range(MinVelocity, MaxVelocity);
+		return Velocity;
 	}
 
 	public void SetTimer(int timer)
