@@ -3,17 +3,18 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour {
 
-	private int cellWidth;
-	private int cellHeight;
+	private float cellWidth;
+	private float cellHeight;
 	private WeaponAbstract weaponTouched;
 	private bool selected;
 
 	// Use this for initialization
 	void Start () 
 	{
-		cellWidth = (int)(Screen.width * 0.0625f);
-		cellHeight = (int)(Screen.height * 0.2f);
+		cellWidth = ScreenExtension.GetPercentWidth(10f);
+		cellHeight = ScreenExtension.GetPercentHeight(16.666f);
 		selected = false;
+		print (ScreenExtension.GetPercentWidth(20));
 	}
 	
 	// Update is called once per frame
@@ -39,8 +40,18 @@ public class WeaponController : MonoBehaviour {
 		}
 		else if(selected)
 		{
-			selected = false;
-			weaponTouched.DropWeapon(touch.position, cellWidth, cellHeight);
+			float a = ScreenExtension.GetPercentWidth(16.666666666f);
+			float b = ScreenExtension.GetPercentHeight(16.666666666f);
+			float c = ScreenExtension.GetPercentHeight(85);
+			if(touch.position.x > a && (touch.position.y > b && touch.position.y < c))
+			{
+				selected = false;
+				float posCellX = (((int)((touch.position.x - a)/cellWidth)) * cellWidth)+a + cellWidth/2;
+				float posCellY = (((int)((touch.position.y - b)/cellHeight)) * cellHeight)+b;
+				weaponTouched.DropWeapon(touch.position, posCellX, posCellY);
+			}
+			else
+				selected = false;
 
 		}
 	}

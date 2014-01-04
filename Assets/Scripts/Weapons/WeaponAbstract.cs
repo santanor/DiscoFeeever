@@ -17,22 +17,15 @@ public abstract class WeaponAbstract : MonoBehaviour {
 
 
 
-	public void DropWeapon(Vector3 position,int cellWidth, int cellHeight)
+	public void DropWeapon(Vector3 position,float posCellX, float posCellY)
 	{
-			Drop (position, cellWidth, cellHeight);
+		Drop (position, posCellX, posCellY);
 	}
 
-	void Drop (Vector3 position, int cellWidth, int cellHeight)
+	void Drop (Vector3 position, float posCellX, float  posCellY)
 	{
 		this.gameObject.collider2D.enabled = true;
-		;
-		int cellX = (int)(position.x / cellWidth);
-		if (cellX == 0)
-			cellX++;
-		int cellY = (int)(position.y / cellHeight);
-		float positionX = (0.0000625f / 2) + cellX * 0.0625f;
-		float positionY = (0.0002f / 2) + cellY * 0.2f;
-		Vector3 rayCellPosition = Camera.main.ViewportPointToRay (new Vector3 (positionX, positionY, 0)).origin;
+		Vector3 rayCellPosition = Camera.main.ScreenPointToRay (new Vector3 (posCellX, posCellY, 0)).origin;
 		Vector3 cellPosition = new Vector3 (rayCellPosition.x, rayCellPosition.y, 1);
 		this.transform.position = cellPosition;
 		Invoke ("ChangeTag", 0.1f);

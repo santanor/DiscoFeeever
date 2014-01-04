@@ -37,7 +37,7 @@ public class Launcher : MonoBehaviour {
 	private void CreateMoscon(string sprite, string time, string street)
 	{
 		GameObject moscon = (GameObject)Instantiate(Resources.Load("Prefabs/Moscones/"+sprite));
-		Vector3 position = Camera.main.ViewportToWorldPoint( new Vector3(1f, (0.2f + (0.2f)*int.Parse(street)), 1f));
+		Vector3 position = Camera.main.ViewportToWorldPoint( new Vector3(1f, (0.2f + (0.17f)*int.Parse(street)), 1f));
 		moscon.transform.position = position;
 		moscon.GetComponent<MosconAbstract>().SetTimer(int.Parse(time));
 		moscones.Add(moscon.GetComponent<MosconAbstract>());
