@@ -25,7 +25,7 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	void Drop (Vector3 position, float posCellX, float  posCellY)
 	{
 		this.gameObject.collider2D.enabled = true;
-		Vector3 rayCellPosition = Camera.main.ScreenPointToRay (new Vector3 (posCellX, posCellY, 0)).origin;
+		Vector3 rayCellPosition = Camera.main.ScreenPointToRay (new Vector3 (posCellX, posCellY, 80)).origin;
 		Vector3 cellPosition = new Vector3 (rayCellPosition.x, rayCellPosition.y, 1);
 		this.transform.position = cellPosition;
 		Invoke ("ChangeTag", 0.1f);

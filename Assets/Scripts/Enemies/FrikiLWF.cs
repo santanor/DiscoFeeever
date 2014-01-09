@@ -15,5 +15,7 @@ public class FrikiLWF : LWFObject {
 		
 		Load(lwfName, dir);
 		Scale(0.3f, 0.3f);
+
+		
 	}
 }

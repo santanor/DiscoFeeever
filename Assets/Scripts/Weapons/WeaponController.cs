@@ -47,7 +47,7 @@ public class WeaponController : MonoBehaviour {
 			{
 				selected = false;
 				float posCellX = (((int)((touch.position.x - a)/cellWidth)) * cellWidth)+a + cellWidth/2;
-				float posCellY = (((int)((touch.position.y - b)/cellHeight)) * cellHeight)+b;
+				float posCellY = (((int)((touch.position.y - b)/cellHeight)) * cellHeight)+b + weaponTouched.gameObject.GetComponent<LWFObject>().lwf.height;
 				weaponTouched.DropWeapon(touch.position, posCellX, posCellY);
 			}
 			else
