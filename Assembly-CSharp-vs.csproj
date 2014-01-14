@@ -46,8 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BlueWeaponLFW.cs" />
-     <Compile Include="Assets\BrownBeverageLWF.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
@@ -185,8 +183,10 @@
      <Compile Include="Assets\Scripts\HUDFPS.cs" />
      <Compile Include="Assets\Scripts\Launcher.cs" />
      <Compile Include="Assets\Scripts\ScreenExtension.cs" />
-     <Compile Include="Assets\Scripts\Weapons\BlueBeverage.cs" />
-     <Compile Include="Assets\Scripts\Weapons\GreenBeverage.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BlueWeapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BlueWeaponLFW.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BrownWeapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BrownWeaponLWF.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponAbstract.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponChooser.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />

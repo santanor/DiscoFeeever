@@ -8,6 +8,8 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	public WeaponChooser chooser;
 	public bool Droped {get; set;}
 	public int Damage {get; set;}
+	public int Level {get; set;}
+	public float floorDuration{get; set;}
 
 	void Start()
 	{
@@ -30,6 +32,7 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		this.transform.position = cellPosition;
 		Invoke ("ChangeTag", 0.1f);
 		chooser.normalWeaponsUsed [this.Position] = false;
+		Destroy(this.gameObject, floorDuration);
 	}
 
 	public void ChangeTag()

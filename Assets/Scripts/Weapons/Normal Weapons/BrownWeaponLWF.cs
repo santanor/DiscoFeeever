@@ -2,7 +2,7 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public class BrownBeverageLWF : LWFObject {
+public class BrownWeaponLWF : LWFObject {
 
 	void Start()
 	{
