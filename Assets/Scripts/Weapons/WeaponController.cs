@@ -14,7 +14,6 @@ public class WeaponController : MonoBehaviour {
 		cellWidth = ScreenExtension.GetPercentWidth(10f);
 		cellHeight = ScreenExtension.GetPercentHeight(16.666f);
 		selected = false;
-		print (ScreenExtension.GetPercentWidth(20));
 	}
 	
 	// Update is called once per frame
@@ -49,6 +48,11 @@ public class WeaponController : MonoBehaviour {
 				float posCellX = (((int)((touch.position.x - a)/cellWidth)) * cellWidth)+a + cellWidth/2;
 				float posCellY = (((int)((touch.position.y - b)/cellHeight)) * cellHeight)+b + weaponTouched.gameObject.GetComponent<LWFObject>().lwf.height;
 				weaponTouched.DropWeapon(touch.position, posCellX, posCellY);
+			}
+			else if (touch.position.x > a && (touch.position.y < b && touch.position.y < c))
+			{
+				selected = false;
+				weaponTouched.tag = "WeaponChanging";
 			}
 			else
 				selected = false;

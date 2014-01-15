@@ -7,6 +7,8 @@ public class BlueWeapon : WeaponAbstract {
 	{
 		chooser = GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>();
 		base.Damage = 70;
+		base.Color = "Blue";
+		base.Level = 1;
 	}
 
 	public override void ExecuteDropedEnter(GameObject gObject)

@@ -9,7 +9,8 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	public bool Droped {get; set;}
 	public int Damage {get; set;}
 	public int Level {get; set;}
-	public float floorDuration{get; set;}
+	public float FloorDuration{get; set;}
+	public string Color {get; set;}
 
 	void Start()
 	{
@@ -32,7 +33,7 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		this.transform.position = cellPosition;
 		Invoke ("ChangeTag", 0.1f);
 		chooser.normalWeaponsUsed [this.Position] = false;
-		Destroy(this.gameObject, floorDuration);
+		Destroy(this.gameObject, FloorDuration);
 	}
 
 	public void ChangeTag()
@@ -49,6 +50,12 @@ public abstract class WeaponAbstract : MonoBehaviour {
 			GameObject go = Instantiate( Resources.Load("Prefabs/Particle/Hit") )as GameObject;
 			go.transform.position = this.transform.position;
 			go.particleSystem.Play(true);
+		}
+		else if(collider.gameObject.tag == "WeaponChanging" && (this.Level + collider.gameObject.GetComponent<WeaponAbstract>().Level) <= 3)
+		{
+			this.Level += collider.gameObject.GetComponent<WeaponAbstract>().Level;
+			GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>().normalWeaponsUsed[collider.gameObject.GetComponent<WeaponAbstract>().Position] = false;
+			DestroyImmediate(collider.gameObject);
 		}
 
 		else if(collider.gameObject.tag == "WeaponDroped")

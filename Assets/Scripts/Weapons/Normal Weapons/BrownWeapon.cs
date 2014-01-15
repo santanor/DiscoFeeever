@@ -7,6 +7,8 @@ public class BrownWeapon : WeaponAbstract {
 	{
 		chooser = GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>();
 		base.Damage = 70;
+		base.Color = "Brown";
+		base.Level = 1;
 	}
 	
 	
