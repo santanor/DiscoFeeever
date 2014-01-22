@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Linq;
 
 /// <summary>
 /// Weapon chooser.
@@ -9,82 +10,76 @@ using System.IO;
 public class WeaponChooser : MonoBehaviour {
 
 	Object[] normalWeapons;
+	Vector3[] positionNormalWeapons;
+	GameObject[] currentNormalWeapons;
 	int numberOfSpecialWeapons;
 	float timeToMove;
 	float distanceBetweenObjects;
 	public bool[] normalWeaponsUsed{get; set;}
-	GameObject nextWeapon;
-	bool reloading;
 
 	// Use this for initialization
 	void Start () 
 	{
 		float offset;
-		Vector3 position;
         normalWeapons = Resources.LoadAll("Prefabs/NormalWeapons");
 		normalWeaponsUsed = new bool[3]; 
-		timeToMove = 1f;
+		positionNormalWeapons = new Vector3[4];
+		currentNormalWeapons = new GameObject[4];
+		timeToMove = 1.5f;
 		for(int i = 0; i < 3; i++)
 		{
 			GameObject weapon = ChooseWeapon("normal");
 			offset = i*0.1f;
-			position = Camera.main.ViewportToWorldPoint(new Vector3(0.3f+offset,0.11f,80));
-			weapon.transform.position = position;
+			positionNormalWeapons[i] = Camera.main.ViewportToWorldPoint(new Vector3(0.3f+offset,0.11f,80));
+			weapon.transform.position = positionNormalWeapons[i];
 			weapon.GetComponent<WeaponAbstract>().Position = i;
+			weapon.GetComponent<WeaponAbstract>().PositionVector = positionNormalWeapons[i];
 			normalWeaponsUsed[i] = true;
+			currentNormalWeapons[i] = weapon;
 		}
-        nextWeapon = ChooseWeapon("normal");
+		currentNormalWeapons[3] = ChooseWeapon("normal");
 		offset = 0.3f;
-		position = Camera.main.ViewportToWorldPoint(new Vector3(0.6f,0.11f,1f));
-		nextWeapon.transform.position = position;
-		nextWeapon.GetComponent<WeaponAbstract>().enabled = false;
-		nextWeapon.GetComponent<LWFObject>().SetAlpha(0.3f);
-		nextWeapon.collider2D.enabled = false;
+		positionNormalWeapons[3] = Camera.main.ViewportToWorldPoint(new Vector3(0.6f,0.11f,1f));
+		currentNormalWeapons[3].transform.position = positionNormalWeapons[3];
+		currentNormalWeapons[3].GetComponent<WeaponAbstract>().PositionVector = positionNormalWeapons[3];
+		currentNormalWeapons[3].collider2D.enabled = false;
 	}
 
 	void Update()
 	{
 		for(int i = 0; i < normalWeaponsUsed.Length; i++)
+		{
 			if(!normalWeaponsUsed[i])
 			{
-				if(!reloading)
-				{
-					nextWeapon.GetComponent<WeaponAbstract>().Position = i;
-					StartCoroutine("ReloadWeaponRoutine",nextWeapon);
-					normalWeaponsUsed[i] = true;
-				}
-			}
-	}
-
-	IEnumerator ReloadWeaponRoutine(GameObject go)
-	{
-		reloading = true;
-		Vector3 pos = go.transform.position;
-		Vector3 targetPos = Camera.main.ViewportToWorldPoint( new Vector3(0.3f+0.1f*(float)go.GetComponent<WeaponAbstract>().Position, 0.11f,1f) );
-		while(true)
-		{
-			if(go.transform.position != targetPos)
-			{
-				go.transform.position = Vector3.MoveTowards(go.transform.position, targetPos, timeToMove);
-				yield return null;
-			}
-			else
-			{
-				go.collider2D.enabled = true;
-				go.GetComponent<WeaponAbstract>().enabled = true;
-				go.GetComponent<LWFObject>().SetAlpha(1f);
-				GameObject gObject = ChooseWeapon("normal");
-				gObject.transform.position = pos;
-				gObject.GetComponent<WeaponAbstract>().enabled = false;
-				gObject.collider2D.enabled = false;
-				nextWeapon.GetComponent<LWFObject>().SetAlpha(0.3f);
-				nextWeapon = gObject;
-				reloading = false;
-				yield break;
+				currentNormalWeapons[i] = null;
+				ReordenateWeapons(i);
+				normalWeaponsUsed[i] = true;
 			}
 		}
-		Destroy(go);
-	} 
+		for(int j = 0; j < currentNormalWeapons.Length; j++)
+		{
+		currentNormalWeapons[j].transform.position = Vector3.MoveTowards(currentNormalWeapons[j].transform.position, currentNormalWeapons[j].GetComponent<WeaponAbstract>().PositionVector, timeToMove);
+		}
+	}
+
+	void ReordenateWeapons(int j)
+	{
+		for(int i = j; i < currentNormalWeapons.Length-1;i++)
+			currentNormalWeapons[i] = currentNormalWeapons[i+1];
+		currentNormalWeapons[3] = ChooseWeapon("normal");
+		currentNormalWeapons[3].transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0.7f,-0.2f,1f));
+		currentNormalWeapons[3].collider2D.enabled = false;
+
+
+		for(int i =0; i < this.currentNormalWeapons.Length; i++)
+		{
+			currentNormalWeapons[i].GetComponent<WeaponAbstract>().Position = i;
+			currentNormalWeapons[i].GetComponent<WeaponAbstract>().PositionVector = positionNormalWeapons[i];
+			if(i == 2)
+				currentNormalWeapons[i].collider2D.enabled = true;
+
+		}
+	}
 
 
 	GameObject ChooseWeapon(string type)

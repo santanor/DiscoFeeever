@@ -181,7 +181,7 @@ public class LWFObject : MonoBehaviour
 				data, gameObject, zOffset, zRate, renderQueueOffset, camera,
 				texturePrefix, fontPrefix, textureLoader, textureUnloader);
 			factory = rendererFactoryConstructor(arg);
-		} else if (useCombinedMeshRenderer && data.textures.Length == 1) {
+		} else if (useCombinedMeshRenderer && data.textures.Length == 1) {;
 			factory = new LWF.CombinedMeshRenderer.Factory(
 				data, gameObject, zOffset, zRate, renderQueueOffset, camera,
 				texturePrefix, fontPrefix, textureLoader, textureUnloader);
@@ -218,7 +218,7 @@ public class LWFObject : MonoBehaviour
 	public virtual void OnLoad()
 	{
 		lwfLoadCallbacks.ForEach(c => c(this));
-		lwfLoadCallbacks = null;
+		//lwfLoadCallbacks = null;
 	}
 
 	public string GetRendererName()

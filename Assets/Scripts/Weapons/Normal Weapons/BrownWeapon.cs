@@ -9,6 +9,7 @@ public class BrownWeapon : WeaponAbstract {
 		base.Damage = 70;
 		base.Color = "Brown";
 		base.Level = 1;
+		base.FloorDuration = 5f;
 	}
 	
 	

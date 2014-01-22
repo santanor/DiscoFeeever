@@ -9,6 +9,7 @@ public class BlueWeapon : WeaponAbstract {
 		base.Damage = 70;
 		base.Color = "Blue";
 		base.Level = 1;
+		base.FloorDuration = 10f;
 	}
 
 	public override void ExecuteDropedEnter(GameObject gObject)

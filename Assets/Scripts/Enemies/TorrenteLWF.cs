@@ -12,9 +12,8 @@ public class TorrenteLWF : LWFObject{
 
         if (Application.isEditor)
             UseDrawMeshRenderer();
-
+		Scale(0.35f,0.35f);
         Load(lwfName, dir);
-        Scale(0.25f, 0.25f);
 	}
 	
 	

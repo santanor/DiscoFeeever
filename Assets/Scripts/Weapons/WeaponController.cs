@@ -7,6 +7,7 @@ public class WeaponController : MonoBehaviour {
 	private float cellHeight;
 	private WeaponAbstract weaponTouched;
 	private bool selected;
+	public GridController gridController;
 
 	// Use this for initialization
 	void Start () 
@@ -14,6 +15,7 @@ public class WeaponController : MonoBehaviour {
 		cellWidth = ScreenExtension.GetPercentWidth(10f);
 		cellHeight = ScreenExtension.GetPercentHeight(16.666f);
 		selected = false;
+        int a = Application.levelCount;
 	}
 	
 	// Update is called once per frame
@@ -26,14 +28,15 @@ public class WeaponController : MonoBehaviour {
 
 	private void ManagePhaseEnd(Touch touch)
 	{
+		var ray = Camera.main.ScreenPointToRay(touch.position);;
+		RaycastHit2D hit;
 		if(!selected)
 		{
-			var ray = Camera.main.ScreenPointToRay(touch.position);
-			RaycastHit2D hit;
 			hit = Physics2D.Raycast (ray.origin, -Vector2.up, 1);
 			if (hit.collider != null && hit.collider.gameObject.tag == "Weapon")
 			{
 				weaponTouched = hit.collider.gameObject.GetComponent<WeaponAbstract> ();
+				gridController.EnableSprite();
 				selected = true;
 			}
 		}
@@ -47,12 +50,24 @@ public class WeaponController : MonoBehaviour {
 				selected = false;
 				float posCellX = (((int)((touch.position.x - a)/cellWidth)) * cellWidth)+a + cellWidth/2;
 				float posCellY = (((int)((touch.position.y - b)/cellHeight)) * cellHeight)+b + weaponTouched.gameObject.GetComponent<LWFObject>().lwf.height;
+				gridController.DisableSprite();
 				weaponTouched.DropWeapon(touch.position, posCellX, posCellY);
 			}
-			else if (touch.position.x > a && (touch.position.y < b && touch.position.y < c))
+			else if (touch.position.x > a && (touch.position.y < b))
 			{
 				selected = false;
-				weaponTouched.tag = "WeaponChanging";
+				gridController.DisableSprite();
+				hit = Physics2D.Raycast (ray.origin, -Vector2.up, 1);
+				if (hit.collider != null && hit.collider.gameObject.tag == "Weapon" && (hit.collider.gameObject != weaponTouched)//Para saber si se deben juntar las armas
+				    &&(hit.collider.gameObject.GetComponent<WeaponAbstract>().Level +weaponTouched.Level )<=3
+				    && hit.collider.gameObject.GetComponent<WeaponAbstract>().Color == weaponTouched.Color)
+				{
+					hit.collider.gameObject.GetComponent<WeaponAbstract>().Level += weaponTouched.Level;
+					hit.collider.gameObject.GetComponent<WeaponAbstract>().RecalculateFloorTime();
+					GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>().normalWeaponsUsed[weaponTouched.Position] = false;
+					DestroyImmediate(weaponTouched.gameObject);
+					hit.collider.gameObject.GetComponent<WeaponAbstractLWF>().SetSprite(hit.collider.gameObject.GetComponent<WeaponAbstract>().Level-1);
+				}
 			}
 			else
 				selected = false;

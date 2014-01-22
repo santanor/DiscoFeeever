@@ -81,18 +81,20 @@ public partial class Factory : UnityRenderer.Factory
 		mesh.MarkDynamic();
 #endif
 
-		meshFilter = gameObject.AddComponent<MeshFilter>();
-		meshFilter.sharedMesh = mesh;
+		//meshFilter = this.gameObject.AddComponent<UnityEngine.MeshFilter>();
+		//meshFilter.sharedMesh = mesh;
 
-		meshRenderer = gameObject.AddComponent<UnityEngine.MeshRenderer>();
-		meshRenderer.castShadows = false;
-		meshRenderer.receiveShadows = false;
+		//meshRenderer = gameObject.AddComponent<UnityEngine.MeshRenderer>();
+		//meshRenderer.castShadows = false;
+		//meshRenderer.receiveShadows = false;
 
 		textureName = texturePrefix + data.textures[0].filename;
-		meshRenderer.sharedMaterial =
-			ResourceCache.SharedInstance().LoadTexture(
-				data.name, textureName, data.textures[0].format,
-					textureLoader, textureUnloader);
+		//meshRenderer.sharedMaterial =
+		//	ResourceCache.SharedInstance().LoadTexture(
+		//		data.name, textureName, data.textures[0].format,
+		//				textureLoader, textureUnloader);
+
+
 		if (renderQueueOffset != 0)
 			meshRenderer.sharedMaterial.renderQueue += renderQueueOffset;
 

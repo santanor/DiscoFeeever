@@ -12,6 +12,7 @@ public class Launcher : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		timer = 0;
+		Level = PlayerPrefs.GetInt("Level",0);
 		moscones = new List<MosconAbstract>();
 		System.IO.StreamReader reader = new System.IO.StreamReader(Application.dataPath+"/levels.json");
 		jObject = new JSONObject(reader.ReadToEnd());
@@ -41,6 +42,7 @@ public class Launcher : MonoBehaviour {
 		moscon.transform.position = position;
 		moscon.GetComponent<MosconAbstract>().SetTimer(int.Parse(time));
 		moscones.Add(moscon.GetComponent<MosconAbstract>());
+		FindObjectOfType<GameController>().NumberOfMoscones++;
 	}
 }
 

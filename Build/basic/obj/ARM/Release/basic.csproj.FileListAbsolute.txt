@@ -4,7 +4,7 @@ C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Assets\T
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Assets\Tiles\FlipCycleTileSmall.png
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Assets\Tiles\IconicTileMediumLarge.png
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Assets\Tiles\IconicTileSmall.png
-C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\levels.json
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\level0
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\mainData
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\managedAssemblies.txt
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\PlayerConnectionConfigFile
@@ -12,9 +12,11 @@ C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\res
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\Resources\unity default resources
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\Resources\unity_builtin_extra
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\sharedassets0.assets
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\sharedassets1.assets
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\basic.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\basic.pdb
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\AppManifest.xaml
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Properties\WMAppManifest.xml
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\basic_Release_ARM.xap
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Assembly-CSharp-firstpass.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Assembly-CSharp.dll
@@ -46,3 +48,4 @@ C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\basic.cs
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\basic.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\basic.pdb
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\XapCacheFile.xml
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\levels.json

@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapons\WeaponController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Launcher.cs">
     <Files>
-      <File FileName="Assets\Scripts\HUDFPS.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\Normal Weapons\BlueWeapon.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\Normal Weapons\BrownWeapon.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\WeaponChooser.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\WeaponAbstract.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\WeaponController.cs" Line="54" Column="22" />
-      <File FileName="Assets\Scripts\Weapons\Normal Weapons\BlueWeaponLFW.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="25" Column="31" />
+      <File FileName="Assets\Scripts\Weapons\WeaponController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Launcher.cs" Line="15" Column="39" />
+      <File FileName="Assets\levels.json" Line="119" Column="33" />
+      <File FileName="Assets\Scripts\Girlfriend\GirlfriendLifeController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemies\MosconAbstract.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Girlfriend\Girlfriend.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

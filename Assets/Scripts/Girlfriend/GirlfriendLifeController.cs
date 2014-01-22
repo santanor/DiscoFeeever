@@ -15,7 +15,6 @@ public class GirlfriendLifeController : MonoBehaviour {
 	{
 		life = girlfriend.Life/100;
 		Color c = new Color(1f,1f,1f,life);
-		this.renderer.material.color = c;
-	
+		this.renderer.material.color = c;	
 	}
 }

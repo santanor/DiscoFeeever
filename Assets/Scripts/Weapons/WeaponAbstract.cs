@@ -4,7 +4,8 @@ using System.Collections;
 public abstract class WeaponAbstract : MonoBehaviour {
 
 	[HideInInspector]
-	public int Position{get; set;}
+	public int Position {get; set;}
+	public Vector3 PositionVector{get; set;}
 	public WeaponChooser chooser;
 	public bool Droped {get; set;}
 	public int Damage {get; set;}
@@ -51,12 +52,6 @@ public abstract class WeaponAbstract : MonoBehaviour {
 			go.transform.position = this.transform.position;
 			go.particleSystem.Play(true);
 		}
-		else if(collider.gameObject.tag == "WeaponChanging" && (this.Level + collider.gameObject.GetComponent<WeaponAbstract>().Level) <= 3)
-		{
-			this.Level += collider.gameObject.GetComponent<WeaponAbstract>().Level;
-			GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>().normalWeaponsUsed[collider.gameObject.GetComponent<WeaponAbstract>().Position] = false;
-			DestroyImmediate(collider.gameObject);
-		}
 
 		else if(collider.gameObject.tag == "WeaponDroped")
 			Destroy (collider.gameObject);
@@ -78,6 +73,10 @@ public abstract class WeaponAbstract : MonoBehaviour {
 			this.ExecuteDropedStay(collider.gameObject);
 	}
 
+	public void RecalculateFloorTime()
+	{
+		this.FloorDuration = (this.FloorDuration+this.Level)*1.5f;
+	}
 
 	abstract public void ExecuteDropedEnter(GameObject gObject);
 	abstract public void ExecuteDropedStay(GameObject gObject);

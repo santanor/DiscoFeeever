@@ -15,7 +15,10 @@ public abstract class MosconAbstract : MonoBehaviour
 	void Update()
 	{
 		if(this.Life <= 0)
+		{
 			Destroy(this.gameObject);
+			FindObjectOfType<GameController>().NumberOfMoscones--;
+		}
 	}
 
 	public void SetVelocity(int minVelocity, int maxVelocity)

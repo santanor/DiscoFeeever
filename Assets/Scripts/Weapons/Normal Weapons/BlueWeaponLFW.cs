@@ -2,18 +2,7 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public class BlueWeaponLFW : LWFObject {
+public class BlueWeaponLFW : WeaponAbstractLWF {
 
-	void Start()
-	{
-		string dir = System.IO.Path.GetDirectoryName(lwfName);
-		if (dir.Length > 0)
-			dir += "/";
-		
-		if (Application.isEditor)
-			UseDrawMeshRenderer();
-		
-		Load(lwfName, dir);
-		Scale (0.30f,0.30f);
-	}
+
 }

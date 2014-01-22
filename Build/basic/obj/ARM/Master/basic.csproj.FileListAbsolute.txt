@@ -4,16 +4,18 @@ C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assets\Ti
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assets\Tiles\FlipCycleTileSmall.png
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assets\Tiles\IconicTileMediumLarge.png
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assets\Tiles\IconicTileSmall.png
-C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\levels.json
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\level0
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\mainData
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\managedAssemblies.txt
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\resources.assets
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\Resources\unity default resources
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\Resources\unity_builtin_extra
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\sharedassets0.assets
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\sharedassets1.assets
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic.pdb
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\AppManifest.xaml
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Properties\WMAppManifest.xml
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic_Master_ARM.xap
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assembly-CSharp-firstpass.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assembly-CSharp.dll
