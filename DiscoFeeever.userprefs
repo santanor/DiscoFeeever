@@ -1,18 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Launcher.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="25" Column="31" />
-      <File FileName="Assets\Scripts\Weapons\WeaponController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Launcher.cs" Line="15" Column="39" />
-      <File FileName="Assets\levels.json" Line="119" Column="33" />
-      <File FileName="Assets\Scripts\Girlfriend\GirlfriendLifeController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemies\MosconAbstract.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Girlfriend\Girlfriend.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="44" Column="23" />
+      <File FileName="Assets\Scripts\Launcher.cs" Line="19" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Assets\Scripts\Launcher.cs" line="14" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

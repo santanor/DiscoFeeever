@@ -37,6 +37,7 @@ public class WeaponController : MonoBehaviour {
 			{
 				weaponTouched = hit.collider.gameObject.GetComponent<WeaponAbstract> ();
 				gridController.EnableSprite();
+				weaponTouched.GetComponent<WeaponAbstractLWF>().Enlarge();
 				selected = true;
 			}
 		}
@@ -45,10 +46,11 @@ public class WeaponController : MonoBehaviour {
 			float a = ScreenExtension.GetPercentWidth(16.666666666f);
 			float b = ScreenExtension.GetPercentHeight(16.666666666f);
 			float c = ScreenExtension.GetPercentHeight(85);
+			weaponTouched.GetComponent<WeaponAbstractLWF>().Dwarf();
 			if(touch.position.x > a && (touch.position.y > b && touch.position.y < c))
 			{
 				selected = false;
-				float posCellX = (((int)((touch.position.x - a)/cellWidth)) * cellWidth)+a + cellWidth/2;
+				float posCellX = (((int)((touch.position.x - a)/cellWidth)) * cellWidth)+a + cellWidth/2- weaponTouched.gameObject.GetComponent<LWFObject>().lwf.width;
 				float posCellY = (((int)((touch.position.y - b)/cellHeight)) * cellHeight)+b + weaponTouched.gameObject.GetComponent<LWFObject>().lwf.height;
 				gridController.DisableSprite();
 				weaponTouched.DropWeapon(touch.position, posCellX, posCellY);

@@ -32,4 +32,14 @@ public class WeaponAbstractLWF : LWFObject {
 		Scale (0.30f,0.30f);
 
 	}
+
+	public void Enlarge()
+	{
+		this.Scale(1.1f,1.1f);
+	}
+
+	public void Dwarf()
+	{
+		this.Scale(0.9f, 0.9f);
+	}
 }

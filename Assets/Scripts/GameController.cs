@@ -27,12 +27,23 @@ public class GameController : MonoBehaviour {
 			Time.timeScale = 0;
 			Text.guiText.text = "Game Over Bitch";
 			gameOver  =true;
+			PlayerPrefs.SetInt("Level",0);
 		}
 		else if(NumberOfMoscones == 0)
 		{
 			PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level")+1);
 			Application.LoadLevel(Application.loadedLevel);
 		}
+	}
+
+	void OnGUI()
+	{
+		if(gameOver)
+			if (GUI.Button(new Rect(300, 200,70, 70), "Reset"))
+			{
+			Time.timeScale = 1;
+				Application.LoadLevel("Main Menu");
+			}
 	}
 
 
