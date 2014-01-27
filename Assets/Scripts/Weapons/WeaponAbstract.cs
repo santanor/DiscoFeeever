@@ -17,24 +17,41 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	{
 		this.gameObject.collider2D.enabled = false;
 		this.Droped = false;
+
 	}
 
 
 
 	public void DropWeapon(Vector3 position,float posCellX, float posCellY)
 	{
-		Drop (position, posCellX, posCellY);
-	}
-
-	void Drop (Vector3 position, float posCellX, float  posCellY)
-	{
-		this.gameObject.collider2D.enabled = true;
+		this.gameObject.collider2D.enabled = false;
 		Vector3 rayCellPosition = Camera.main.ScreenPointToRay (new Vector3 (posCellX, posCellY, 80)).origin;
 		Vector3 cellPosition = new Vector3 (rayCellPosition.x, rayCellPosition.y, 1);
-		this.transform.position = cellPosition;
-		Invoke ("ChangeTag", 0.1f);
 		chooser.normalWeaponsUsed [this.Position] = false;
+		StartCoroutine(MoveWeapon(cellPosition));
+	}
+
+	void Drop ()
+	{
+		this.gameObject.collider2D.enabled = true;
+		Invoke ("ChangeTag", 0.1f);
+
 		Destroy(this.gameObject, FloorDuration);
+	}
+
+	IEnumerator MoveWeapon(Vector3 cellPosition)
+	{
+		float distance = Vector3.Distance(this.transform.position, cellPosition)/2;
+		while(this.transform.position != cellPosition)
+		{
+			this.transform.position = Vector3.MoveTowards(this.transform.position, cellPosition, 4f);
+			if(Vector3.Distance(this.transform.position, cellPosition) > distance)
+				this.GetComponent<WeaponAbstractLWF>().Scale(1.03f,1.03f);
+			else
+				this.GetComponent<WeaponAbstractLWF>().Scale(0.97f,0.97f);
+			yield return null;
+		}
+		this.Drop();
 	}
 
 	public void ChangeTag()
@@ -70,7 +87,10 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D collider)
 	{
 		if(collider.gameObject.tag == "Enemy" && this.Droped)
+		{
+			FindObjectOfType<ScoreController>().Score += 1;
 			this.ExecuteDropedStay(collider.gameObject);
+		}
 	}
 
 	public void RecalculateFloorTime()

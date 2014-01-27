@@ -8,8 +8,8 @@ public abstract class MosconAbstract : MonoBehaviour
 	public int Velocity {get; set;}
 	public int Life {get; set;}
 	public int Timer {get; set;}
+	private ScoreController scoreController;
 	Girlfriend girlfriend;
-
 
 
 	void Update()
@@ -18,6 +18,8 @@ public abstract class MosconAbstract : MonoBehaviour
 		{
 			Destroy(this.gameObject);
 			FindObjectOfType<GameController>().NumberOfMoscones--;
+			FindObjectOfType<ScoreController>().Score += 50;
+
 		}
 	}
 
