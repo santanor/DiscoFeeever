@@ -175,6 +175,7 @@
      <Compile Include="Assets\Scripts\Enemies\Garrulo.cs" />
      <Compile Include="Assets\Scripts\Enemies\GarruloLWF.cs" />
      <Compile Include="Assets\Scripts\Enemies\MosconAbstract.cs" />
+     <Compile Include="Assets\Scripts\Enemies\MosconAbstractLWF.cs" />
      <Compile Include="Assets\Scripts\Enemies\Torrente.cs" />
      <Compile Include="Assets\Scripts\Enemies\TorrenteLWF.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
