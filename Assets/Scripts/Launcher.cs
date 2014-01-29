@@ -14,8 +14,7 @@ public class Launcher : MonoBehaviour {
 		timer = 0;
 		Level = PlayerPrefs.GetInt("Level",0);
 		moscones = new List<MosconAbstract>();
-		System.IO.StreamReader reader = new System.IO.StreamReader(Application.dataPath+"/levels.json");
-		jObject = new JSONObject(reader.ReadToEnd());
+		jObject = new JSONObject(Resources.Load("levels").ToString());
 		foreach(var obj in jObject["levels"]["level"][Level]["implements"]["implement"][0]["enemy"].list)
 			CreateMoscon(obj[0].ToString().Replace("\"",""),obj[1].ToString().Replace("\"",""), obj[2].ToString().Replace("\"",""));
 
