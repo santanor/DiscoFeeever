@@ -10,6 +10,7 @@ public class PurpleWeapon : WeaponAbstract {
 		base.Color = "Purple";
 		base.Level = 1;
 		base.FloorDuration = 10f;
+
 	}
 	
 	public override void ExecuteDropedEnter(GameObject gObject)

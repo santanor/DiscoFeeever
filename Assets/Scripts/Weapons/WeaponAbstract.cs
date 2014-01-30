@@ -17,7 +17,6 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	{
 		this.gameObject.collider2D.enabled = false;
 		this.Droped = false;
-
 	}
 
 
@@ -29,20 +28,11 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		chooser.normalWeaponsUsed [this.Position] = false;
 		StartCoroutine(MoveWeapon(cellPosition));
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> dd51058769f6ab355db57447732d86b45fdc6b7c
 	void Drop ()
 	{
 		this.gameObject.collider2D.enabled = true;
 		Invoke ("ChangeTag", 0.1f);
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> dd51058769f6ab355db57447732d86b45fdc6b7c
 		Destroy(this.gameObject, FloorDuration);
 	}
 
@@ -51,11 +41,7 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		float distance = Vector3.Distance(this.transform.position, cellPosition)/2;
 		while(this.transform.position != cellPosition)
 		{
-<<<<<<< HEAD
 			this.transform.position = Vector3.MoveTowards(this.transform.position, cellPosition, 6f);
-=======
-			this.transform.position = Vector3.MoveTowards(this.transform.position, cellPosition, 4f);
->>>>>>> dd51058769f6ab355db57447732d86b45fdc6b7c
 			if(Vector3.Distance(this.transform.position, cellPosition) > distance)
 				this.GetComponent<WeaponAbstractLWF>().Scale(1.03f,1.03f);
 			else
@@ -65,11 +51,6 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		this.Drop();
 	}
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dd51058769f6ab355db57447732d86b45fdc6b7c
 	public void ChangeTag()
 	{
 		this.gameObject.tag = "WeaponDroped";
@@ -80,11 +61,13 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	{
 		if(collider.gameObject.tag == "Enemy" && !this.Droped)
 		{
+			this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
 			this.ExecuteAir(collider.gameObject);
 			GameObject go = Instantiate( Resources.Load("Prefabs/Particle/Hit") )as GameObject;
 			go.transform.position = this.transform.position;
 			go.particleSystem.Play(true);
 			collider.GetComponent<MosconAbstractLWF>().LoadState(1);//1 para recibir daño
+			this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
 		}
 
 		else if(collider.gameObject.tag == "WeaponDroped")

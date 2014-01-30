@@ -1,0 +1,198 @@
+{
+  "levels": {
+    "level": [
+      {
+        "-id": "0",
+        "implements": {
+          "implement": [
+            {
+              "-id": "0",
+              "enemy": [
+                {
+                  "-character": "garrulo",
+                  "-delay": "2",
+                  "-street": "0"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "3",
+                  "-street": "1"
+                },
+                {
+                  "-character": "friki",
+                  "-delay": "4",
+                  "-street": "2"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "5",
+                  "-street": "3"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "5",
+                  "-street": "3"
+                },
+                {
+                  "-character": "torrente",
+                  "-delay": "6",
+                  "-street": "2"
+                },
+                {
+                  "-character": "friki",
+                  "-delay": "7",
+                  "-street": "0"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "7",
+                  "-street": "2"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "20",
+                  "-street": "0"
+                },
+                {
+                  "-character": "friki",
+                  "-delay": "25",
+                  "-street": "0"
+                },
+                {
+                  "-character": "friki",
+                  "-delay": "30",
+                  "-street": "1"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "32",
+                  "-street": "3"
+                },
+                {
+                  "-character": "torrente",
+                  "-delay": "33",
+                  "-street": "3"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "34",
+                  "-street": "2"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "35",
+                  "-street": "1"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "50",
+                  "-street": "3"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "60",
+                  "-street": "1"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "65",
+                  "-street": "2"
+                },
+                {
+                  "-character": "torrente",
+                  "-delay": "68",
+                  "-street": "3"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "75",
+                  "-street": "1"
+                },
+                {
+                  "-character": "friki",
+                  "-delay": "78",
+                  "-street": "0"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "80",
+                  "-street": "2"
+                }
+              ]
+            },
+            { "-id": "1" }
+          ]
+        }
+      },
+      {
+        "-id": "1",
+        "implements": {
+          "implement": [
+            {
+              "-id": "0",
+              "enemy": [
+                {
+                  "-character": "garrulo",
+                  "-delay": "2",
+                  "-street": "0"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "3",
+                  "-street": "1"
+                },
+                {
+                  "-character": "friki",
+                  "-delay": "4",
+                  "-street": "2"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "5",
+                  "-street": "3"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "5",
+                  "-street": "3"
+                },
+                {
+                  "-character": "torrente",
+                  "-delay": "6",
+                  "-street": "2"
+                },
+                {
+                  "-character": "friki",
+                  "-delay": "7",
+                  "-street": "0"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "7",
+                  "-street": "2"
+                }
+              ]
+            },
+            {
+              "-id": "1",
+              "enemy": [
+                {
+                  "-character": "chulo",
+                  "-delay": "0"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "5"
+                },
+                {
+                  "-character": "torrente",
+                  "-delay": "10"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

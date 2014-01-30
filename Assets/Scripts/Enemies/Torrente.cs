@@ -5,7 +5,7 @@ public class Torrente : MosconAbstract
 {
 	void Start()
 	{
-		base.SetVelocity(20,30);
+		base.SetVelocity(10,20);
 		base.Life = 90;
 	}
 }

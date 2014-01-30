@@ -9,7 +9,7 @@ public class Chulo :  MosconAbstract
 
 	void Start()
 	{
-		base.SetVelocity(30,40);
+		base.SetVelocity(10,20);
 		base.Life = 100;
 	}
 }

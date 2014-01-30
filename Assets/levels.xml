@@ -3,29 +3,55 @@
 		<level id="0">
 			<implements>
 				<implement id="0">
-					<enemy character="garrulo" delay="0" />
-					<enemy character="chulo" delay="5" />
-					<enemy character="friki" delay="10" />
+				<!-- Oleada 0-->
+					<enemy character="garrulo" delay="2" street="0" />
+					<enemy character="chulo" delay="3" street="1" />
+					<enemy character="friki" delay="4" street="2" />
+					<enemy character="garrulo" delay="5" street="3" />
+					<enemy character="chulo" delay="5" street="3" />
+					<enemy character="torrente" delay="6" street="2" />
+					<enemy character="friki" delay="7" street="0" />
+					<enemy character="chulo" delay="7" street="2" />
+				<!-- Oleada 1-->
+					<enemy character="garrulo" delay="20" street="0" />
+					<enemy character="friki" delay="25" street="0" />
+					<enemy character="friki" delay="30" street="1" />
+					<enemy character="chulo" delay="32" street="3" />
+					<enemy character="torrente" delay="33" street="3" />
+					<enemy character="chulo" delay="34" street="2" />
+					<enemy character="chulo" delay="35" street="1" />
+				<!-- Oleada 2-->
+					<enemy character="chulo" delay="50" street="3" />
+					<enemy character="chulo" delay="60" street="1" />
+					<enemy character="garrulo" delay="65" street="2" />
+					<enemy character="torrente" delay="68" street="3" />
+					<enemy character="chulo" delay="75" street="1" />
+					<enemy character="friki" delay="78" street="0" />
+					<enemy character="garrulo" delay="80" street="2" />
+					
 				</implement>
 				<implement id="1">
-					<enemy character="chulo" delay="0" />
-					<enemy character="garrulo" delay="5" />
-					<enemy character="friki" delay="10" />
 				</implement>
 			</implements>
 		</level>
 		<level id="1">
 			<implements>
 				<implement id="0">
-					<enemy character="garrulo" delay="0" />
-					<enemy character="chulo" delay="5" />
-					<enemy character="friki" delay="10" />
+					<enemy character="garrulo" delay="2" street="0" />
+					<enemy character="chulo" delay="3" street="1" />
+					<enemy character="friki" delay="4" street="2" />
+					<enemy character="garrulo" delay="5" street="3" />
+					<enemy character="chulo" delay="5" street="3" />
+					<enemy character="torrente" delay="6" street="2" />
+					<enemy character="friki" delay="7" street="0" />
+					<enemy character="chulo" delay="7" street="2" />
 				</implement>
 				<implement id="1">
 					<enemy character="chulo" delay="0" />
 					<enemy character="garrulo" delay="5" />
-					<enemy character="friki" delay="10" />
+					<enemy character="torrente" delay="10" />
 				</implement>
 			</implements>
 		</level>
 	</levels>
+	

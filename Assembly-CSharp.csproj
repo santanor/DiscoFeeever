@@ -167,7 +167,6 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-     <Compile Include="Assets\Particles\CartoonFX.asset" />
      <Compile Include="Assets\Resources\Prefabs\Particle\CFX_Layer.cs" />
      <Compile Include="Assets\ScoreController.cs" />
      <Compile Include="Assets\Scripts\Enemies\Chulo.cs" />
