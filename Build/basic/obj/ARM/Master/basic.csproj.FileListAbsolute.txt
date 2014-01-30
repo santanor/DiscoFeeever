@@ -15,7 +15,6 @@ C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\shar
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic.pdb
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\AppManifest.xaml
-C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Properties\WMAppManifest.xml
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic_Master_ARM.xap
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assembly-CSharp-firstpass.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assembly-CSharp.dll

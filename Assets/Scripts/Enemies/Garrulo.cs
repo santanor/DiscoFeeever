@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Garrulo : MosconAbstract
 {
-	void Start()
+	public override void StartMoscon()
 	{
 		base.SetVelocity(7,15);
 		base.Life = 120;

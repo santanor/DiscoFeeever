@@ -47,6 +47,7 @@ public abstract class MosconAbstract : MonoBehaviour
 
 	public void Launch()
 	{
+		this.StartMoscon ();
 		this.gameObject.rigidbody2D.velocity = Vector3.left*GetVelocity();
 	}
 
@@ -64,6 +65,8 @@ public abstract class MosconAbstract : MonoBehaviour
 		if(collider.gameObject.tag == "Limit")
 			this.girlfriend.Life -= 1*Time.deltaTime;
 	}
+
+	abstract public void StartMoscon();
 }
 
 

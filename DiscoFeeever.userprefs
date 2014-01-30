@@ -1,18 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Launcher.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapons\WeaponAbstract.cs">
     <Files>
-<<<<<<< HEAD
-      <File FileName="Assets\Scripts\Weapons\WeaponChooser.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\WeaponAbstract.cs" Line="64" Column="88" />
-      <File FileName="Assets\Scripts\Weapons\Normal Weapons\BlueWeapon.cs" Line="12" Column="28" />
-      <File FileName="Assets\Scripts\Weapons\Normal Weapons\BrownWeapon.cs" Line="12" Column="27" />
-      <File FileName="Assets\Scripts\Weapons\Normal Weapons\GreenWeapon.cs" Line="13" Column="1" />
-      <File FileName="Assets\Scripts\Weapons\Normal Weapons\PurpleWeapon.cs" Line="12" Column="28" />
-      <File FileName="Assets\Scripts\Launcher.cs" Line="20" Column="1" />
-=======
-      <File FileName="Assets\Scripts\Launcher.cs" Line="14" Column="13" />
->>>>>>> 502595224bdbcdb3e33d33cac8e5c117c4762527
+      <File FileName="Assets\Scripts\Weapons\WeaponAbstract.cs" Line="103" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -59,15 +59,14 @@ public abstract class WeaponAbstract : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
+		this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
 		if(collider.gameObject.tag == "Enemy" && !this.Droped)
 		{
-			this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
 			this.ExecuteAir(collider.gameObject);
 			GameObject go = Instantiate( Resources.Load("Prefabs/Particle/Hit") )as GameObject;
 			go.transform.position = this.transform.position;
 			go.particleSystem.Play(true);
 			collider.GetComponent<MosconAbstractLWF>().LoadState(1);//1 para recibir daño
-			this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
 		}
 
 		else if(collider.gameObject.tag == "WeaponDroped")

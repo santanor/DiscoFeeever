@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Torrente : MosconAbstract 
 {
-	void Start()
+	public override void StartMoscon()
 	{
 		base.SetVelocity(10,20);
 		base.Life = 90;
