@@ -9,8 +9,8 @@ public class Chulo :  MosconAbstract
 
 	public override	void StartMoscon()
 	{
-		base.SetVelocity(10,20);
-		base.Life = 100;
+		base.SetVelocity(7,10);
+		base.Life = 20;
 	}
 }
 

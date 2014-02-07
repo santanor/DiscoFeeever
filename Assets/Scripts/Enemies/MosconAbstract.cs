@@ -19,7 +19,6 @@ public abstract class MosconAbstract : MonoBehaviour
 			Destroy(this.gameObject);
 			FindObjectOfType<GameController>().NumberOfMoscones--;
 			FindObjectOfType<ScoreController>().Score += 50;
-
 		}
 	}
 
@@ -57,6 +56,7 @@ public abstract class MosconAbstract : MonoBehaviour
 		{
 			this.rigidbody2D.velocity = Vector3.zero;
 			girlfriend = GameObject.Find("Girlfriend").GetComponent<Girlfriend>();
+			this.GetComponent<MosconAbstractLWF>().LoadState(2, ()=>2);
 		}
 	}
 

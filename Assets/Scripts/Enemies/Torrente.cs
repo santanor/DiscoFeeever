@@ -5,7 +5,7 @@ public class Torrente : MosconAbstract
 {
 	public override void StartMoscon()
 	{
-		base.SetVelocity(10,20);
-		base.Life = 90;
+		base.SetVelocity(5,10);
+		base.Life = 40;
 	}
 }

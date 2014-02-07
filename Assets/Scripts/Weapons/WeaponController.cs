@@ -66,7 +66,7 @@ public class WeaponController : MonoBehaviour {
 				{
 					hit.collider.gameObject.GetComponent<WeaponAbstract>().Level += weaponTouched.Level;
 					hit.collider.gameObject.GetComponent<WeaponAbstract>().RecalculateFloorTime();
-					GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>().normalWeaponsUsed[weaponTouched.Position] = false;
+					GameObject.Find("Weapon Controller").GetComponent<NormalWeaponChooser>().normalWeaponsUsed[weaponTouched.Position] = false;
 					DestroyImmediate(weaponTouched.gameObject);
 					hit.collider.gameObject.GetComponent<WeaponAbstractLWF>().SetSprite(hit.collider.gameObject.GetComponent<WeaponAbstract>().Level-1);
 				}

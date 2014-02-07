@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PurpleWeapon : WeaponAbstract {
 
 	// Use this for initialization
 	void Start () {
-		chooser = GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>();
+		normalWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<NormalWeaponChooser>();
+		specialWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<SpecialWeaponChooser>();
 		base.Damage = 70;
 		base.Color = "Purple";
 		base.Level = 1;

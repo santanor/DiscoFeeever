@@ -5,7 +5,7 @@ public class Garrulo : MosconAbstract
 {
 	public override void StartMoscon()
 	{
-		base.SetVelocity(7,15);
-		base.Life = 120;
+		base.SetVelocity(4,7);
+		base.Life = 60;
 	}
 }

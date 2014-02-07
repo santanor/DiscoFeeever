@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using LWF;
 
 [ExecuteInEditMode]
 public class WeaponAbstractLWF : LWFObject {
 
 	public string[] Images;
+	private Action<Movie, Button> _callback;
 
 	void Start()
 	{
@@ -31,6 +34,23 @@ public class WeaponAbstractLWF : LWFObject {
 		Load(Images[index], dir);
 		Scale (0.30f,0.30f);
 
+	}
+
+	public void LoadState(int state, Action<Movie, Button> callback = null)
+	{
+		this._callback = callback;
+		string dir = System.IO.Path.GetDirectoryName(Images[state]);
+		if (dir.Length > 0)
+			dir += "/";
+		Load(Images[state], dir, lwfLoadCallback:State_Callback);
+		Scale(0.3f,0.3f);
+
+	}
+
+	void State_Callback(LWFObject lwfobject)
+	{
+		// Add callback for fscommand("event", "end_of_frame")  
+		lwfobject.AddEventHandler("end_of_frame",_callback );
 	}
 
 	public void Enlarge()

@@ -6,12 +6,14 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	[HideInInspector]
 	public int Position {get; set;}
 	public Vector3 PositionVector{get; set;}
-	public WeaponChooser chooser;
+	public NormalWeaponChooser normalWeaponChooser;
+	public SpecialWeaponChooser specialWeaponChooser;
 	public bool Droped {get; set;}
 	public int Damage {get; set;}
 	public int Level {get; set;}
 	public float FloorDuration{get; set;}
 	public string Color {get; set;}
+	public bool special {get; set;}
 
 	void Start()
 	{
@@ -25,7 +27,10 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		this.gameObject.collider2D.enabled = false;
 		Vector3 rayCellPosition = Camera.main.ScreenPointToRay (new Vector3 (posCellX, posCellY, 80)).origin;
 		Vector3 cellPosition = new Vector3 (rayCellPosition.x, rayCellPosition.y, 1);
-		chooser.normalWeaponsUsed [this.Position] = false;
+		if(this.special)
+			specialWeaponChooser.specialWeaponsUsed[this.Position] = false;
+		else
+			normalWeaponChooser.normalWeaponsUsed [this.Position] = false;
 		StartCoroutine(MoveWeapon(cellPosition));
 	}
 
@@ -59,13 +64,17 @@ public abstract class WeaponAbstract : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<AudioSource>().clip);
+
 		if(collider.gameObject.tag == "Enemy" && !this.Droped)
 		{
+
 			this.ExecuteAir(collider.gameObject);
-			GameObject go = Instantiate( Resources.Load("Prefabs/Particle/Hit") )as GameObject;
-			go.transform.position = this.transform.position;
-			go.particleSystem.Play(true);
+			if(!special)
+			{
+				GameObject go = Instantiate( Resources.Load("Prefabs/Particle/Hit") )as GameObject;
+				go.transform.position = this.transform.position;
+				go.particleSystem.Play(true);
+			}
 			collider.GetComponent<MosconAbstractLWF>().LoadState(1);//1 para recibir daño
 		}
 

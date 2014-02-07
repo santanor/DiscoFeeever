@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GreenWeapon : WeaponAbstract {
 
 	// Use this for initialization
 	void Start () {
-		chooser = GameObject.Find("Weapon Controller").GetComponent<WeaponChooser>();
+		normalWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<NormalWeaponChooser>();
+		specialWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<SpecialWeaponChooser>();
 		base.Damage = 40;
 		base.Color = "Green";
 		base.Level = 1;

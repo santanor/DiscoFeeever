@@ -15,72 +15,72 @@
                 },
                 {
                   "-character": "chulo",
-                  "-delay": "3",
+                  "-delay": "4",
                   "-street": "1"
                 },
                 {
-                  "-character": "friki",
-                  "-delay": "4",
-                  "-street": "2"
-                },
-                {
                   "-character": "garrulo",
-                  "-delay": "5",
-                  "-street": "3"
-                },
-                {
-                  "-character": "chulo",
-                  "-delay": "5",
-                  "-street": "3"
-                },
-                {
-                  "-character": "torrente",
                   "-delay": "6",
                   "-street": "2"
                 },
                 {
-                  "-character": "friki",
-                  "-delay": "7",
-                  "-street": "0"
-                },
-                {
-                  "-character": "chulo",
-                  "-delay": "7",
-                  "-street": "2"
-                },
-                {
                   "-character": "garrulo",
-                  "-delay": "20",
-                  "-street": "0"
-                },
-                {
-                  "-character": "friki",
-                  "-delay": "25",
-                  "-street": "0"
-                },
-                {
-                  "-character": "friki",
-                  "-delay": "30",
-                  "-street": "1"
+                  "-delay": "8",
+                  "-street": "3"
                 },
                 {
                   "-character": "chulo",
-                  "-delay": "32",
+                  "-delay": "9",
                   "-street": "3"
                 },
                 {
                   "-character": "torrente",
+                  "-delay": "11",
+                  "-street": "2"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "15",
+                  "-street": "0"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "20",
+                  "-street": "2"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "30",
+                  "-street": "0"
+                },
+                {
+                  "-character": "garrulo",
                   "-delay": "33",
+                  "-street": "0"
+                },
+                {
+                  "-character": "garrulo",
+                  "-delay": "35",
+                  "-street": "1"
+                },
+                {
+                  "-character": "chulo",
+                  "-delay": "39",
+                  "-street": "3"
+                },
+                {
+                  "-character": "torrente",
+                  "-delay": "41",
                   "-street": "3"
                 },
                 {
                   "-character": "chulo",
-                  "-delay": "34",
+                  "-delay": "44",
                   "-street": "2"
                 },
                 {
                   "-character": "chulo",
-                  "-delay": "35",
+                  "-delay": "45",
                   "-street": "1"
                 },
                 {
@@ -109,7 +109,7 @@
                   "-street": "1"
                 },
                 {
-                  "-character": "friki",
+                  "-character": "garrulo",
                   "-delay": "78",
                   "-street": "0"
                 },
@@ -142,7 +142,7 @@
                   "-street": "1"
                 },
                 {
-                  "-character": "friki",
+                  "-character": "garrulo",
                   "-delay": "4",
                   "-street": "2"
                 },
@@ -162,7 +162,7 @@
                   "-street": "2"
                 },
                 {
-                  "-character": "friki",
+                  "-character": "garrulo",
                   "-delay": "7",
                   "-street": "0"
                 },
