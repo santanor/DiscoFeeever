@@ -4,7 +4,7 @@ using System;
 using LWF;
 
 [ExecuteInEditMode]
-public class WeaponAbstractLWF : LWFObject {
+public abstract class WeaponAbstractLWF : LWFObject {
 
 	public string[] Images;
 	private Action<Movie, Button> _callback;
@@ -62,4 +62,6 @@ public class WeaponAbstractLWF : LWFObject {
 	{
 		this.Scale(0.9f, 0.9f);
 	}
+
+	abstract public void LoadOnHitMosconState(MosconAbstractLWF moscon);
 }

@@ -9,7 +9,7 @@ public abstract class WeaponAbstract : MonoBehaviour {
 	public NormalWeaponChooser normalWeaponChooser;
 	public SpecialWeaponChooser specialWeaponChooser;
 	public bool Droped {get; set;}
-	public int Damage {get; set;}
+	public float Damage {get; set;}
 	public int Level {get; set;}
 	public float FloorDuration{get; set;}
 	public string Color {get; set;}
@@ -28,7 +28,11 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		Vector3 rayCellPosition = Camera.main.ScreenPointToRay (new Vector3 (posCellX, posCellY, 80)).origin;
 		Vector3 cellPosition = new Vector3 (rayCellPosition.x, rayCellPosition.y, 1);
 		if(this.special)
+		{
 			specialWeaponChooser.specialWeaponsUsed[this.Position] = false;
+			this.GetComponent<WeaponAbstractLWF>().LoadState(1);//Sprite en el suelo
+
+		}
 		else
 			normalWeaponChooser.normalWeaponsUsed [this.Position] = false;
 		StartCoroutine(MoveWeapon(cellPosition));
@@ -75,7 +79,7 @@ public abstract class WeaponAbstract : MonoBehaviour {
 				go.transform.position = this.transform.position;
 				go.particleSystem.Play(true);
 			}
-			collider.GetComponent<MosconAbstractLWF>().LoadState(1);//1 para recibir daño
+			this.GetComponent<WeaponAbstractLWF>().LoadOnHitMosconState(collider.GetComponent<MosconAbstractLWF>());
 		}
 
 		else if(collider.gameObject.tag == "WeaponDroped")
@@ -101,9 +105,10 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		}
 	}
 
-	public void RecalculateFloorTime()
+	public void RecalculateWeaponStats()
 	{
 		this.FloorDuration = (this.FloorDuration+this.Level)*1.5f;
+		this.Damage = (this.Damage+this.Level)*1.5f;
 	}
 
 	abstract public void ExecuteDropedEnter(GameObject gObject);

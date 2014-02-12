@@ -6,7 +6,7 @@ public abstract class MosconAbstract : MonoBehaviour
 	public int MinVelocity {get; set;}
 	public int MaxVelocity {get; set;}
 	public int Velocity {get; set;}
-	public int Life {get; set;}
+	public float Life {get; set;}
 	public int Timer {get; set;}
 	private ScoreController scoreController;
 	Girlfriend girlfriend;

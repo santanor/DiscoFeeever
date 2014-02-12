@@ -46,8 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ExtinguisherWeapon.cs" />
-     <Compile Include="Assets\ExtinguisherWeaponLWF.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
@@ -200,7 +198,11 @@
      <Compile Include="Assets\Scripts\Weapons\Normal Weapons\PurpleWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\Normal Weapons\PurpleWeaponLWF.cs" />
      <Compile Include="Assets\Scripts\Weapons\NormalWeaponChooser.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeaponChooser.cs" />
+     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\DollWeapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\DollWeaponLWF.cs" />
+     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\ExtinguisherWeapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\ExtinguisherWeaponLWF.cs" />
+     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\SpecialWeaponChooser.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponAbstract.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponAbstractLWF.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />

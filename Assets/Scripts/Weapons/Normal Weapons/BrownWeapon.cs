@@ -7,7 +7,7 @@ public class BrownWeapon : WeaponAbstract {
 	{
 		normalWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<NormalWeaponChooser>();
 		specialWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<SpecialWeaponChooser>();
-		base.Damage = 70;
+		base.Damage = 4;
 		base.Color = "Brown";
 		base.Level = 1;
 		base.FloorDuration = 5f;

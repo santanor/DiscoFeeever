@@ -1,17 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ExtinguisherWeapon.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapons\WeaponAbstract.cs">
     <Files>
-      <File FileName="Assets\ExtinguisherWeapon.cs" Line="15" Column="23" />
-      <File FileName="Assets\Scripts\Weapons\WeaponAbstractLWF.cs" Line="39" Column="72" />
-      <File FileName="Assets\Scripts\Weapons\WeaponAbstract.cs" Line="78" Column="4" />
-      <File FileName="Assets\Scripts\Enemies\MosconAbstractLWF.cs" Line="50" Column="4" />
-      <File FileName="Assets\Scripts\Enemies\Chulo.cs" Line="12" Column="24" />
-      <File FileName="Assets\Scripts\Enemies\Garrulo.cs" Line="8" Column="23" />
-      <File FileName="Assets\Scripts\Enemies\Torrente.cs" Line="8" Column="24" />
-      <File FileName="Assets\Scripts\Enemies\MosconAbstract.cs" Line="21" Column="21" />
-      <File FileName="Assets\Scripts\Weapons\SpecialWeaponChooser.cs" Line="33" Column="93" />
-      <File FileName="Assets\Resources\levels.json" Line="83" Column="32" />
+      <File FileName="Assets\Scripts\Weapons\SpecialWeapons\DollWeapon.cs" Line="28" Column="28" />
+      <File FileName="Assets\Scripts\Weapons\WeaponController.cs" Line="58" Column="60" />
+      <File FileName="Assets\Scripts\Weapons\WeaponAbstract.cs" Line="34" Column="4" />
+      <File FileName="Assets\Scripts\Weapons\SpecialWeapons\SpecialWeaponChooser.cs" Line="18" Column="5" />
+      <File FileName="Assets\Scripts\NewGameButton.cs" Line="46" Column="4" />
+      <File FileName="Assets\Scripts\Weapons\SpecialWeapons\DollWeaponLWF.cs" Line="7" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
