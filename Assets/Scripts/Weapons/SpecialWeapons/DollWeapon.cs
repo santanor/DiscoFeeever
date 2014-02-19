@@ -18,7 +18,6 @@ public class DollWeapon : WeaponAbstract {
 	{
 		if(life <= 0)
 			Destroy(this.gameObject);
-		print(this.life);
 	}
 	
 	public override void ExecuteDropedEnter(GameObject gObject)

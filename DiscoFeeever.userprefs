@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Weapons\WeaponAbstract.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\StrogWeapon.cs">
     <Files>
-      <File FileName="Assets\Scripts\Weapons\SpecialWeapons\DollWeapon.cs" Line="28" Column="28" />
-      <File FileName="Assets\Scripts\Weapons\WeaponController.cs" Line="58" Column="60" />
-      <File FileName="Assets\Scripts\Weapons\WeaponAbstract.cs" Line="34" Column="4" />
-      <File FileName="Assets\Scripts\Weapons\SpecialWeapons\SpecialWeaponChooser.cs" Line="18" Column="5" />
-      <File FileName="Assets\Scripts\NewGameButton.cs" Line="46" Column="4" />
-      <File FileName="Assets\Scripts\Weapons\SpecialWeapons\DollWeaponLWF.cs" Line="7" Column="17" />
+      <File FileName="Assets\StrogWeaponLWF.cs" Line="8" Column="21" />
+      <File FileName="Assets\StrogWeapon.cs" Line="41" Column="28" />
+      <File FileName="Assets\Scripts\Weapons\SpecialWeapons\ExtinguisherWeapon.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\Enemies\MosconAbstractLWF.cs" Line="25" Column="1" />
+      <File FileName="Assets\Scripts\Weapons\WeaponAbstractLWF.cs" Line="48" Column="1" />
+      <File FileName="Assets\Scripts\Weapons\WeaponAbstract.cs" Line="91" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
