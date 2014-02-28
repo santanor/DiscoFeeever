@@ -168,7 +168,6 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Resources\Prefabs\Particle\CFX_Layer.cs" />
-     <Compile Include="Assets\ScoreController.cs" />
      <Compile Include="Assets\Scripts\Enemies\Chulo.cs" />
      <Compile Include="Assets\Scripts\Enemies\ChuloLWF.cs" />
      <Compile Include="Assets\Scripts\Enemies\Friki.cs" />
@@ -188,6 +187,7 @@
      <Compile Include="Assets\Scripts\Interface\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\Launcher.cs" />
      <Compile Include="Assets\Scripts\NewGameButton.cs" />
+     <Compile Include="Assets\Scripts\ScoreController.cs" />
      <Compile Include="Assets\Scripts\ScreenExtension.cs" />
      <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BlueWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BlueWeaponLFW.cs" />
@@ -203,12 +203,13 @@
      <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\ExtinguisherWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\ExtinguisherWeaponLWF.cs" />
      <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\SpecialWeaponChooser.cs" />
+     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\StrogWeapon.cs" />
+     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\StrogWeaponLWF.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponAbstract.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponAbstractLWF.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponLauncher.cs" />
-     <Compile Include="Assets\StrogWeapon.cs" />
-     <Compile Include="Assets\StrogWeaponLWF.cs" />
+     <Compile Include="Assets\Shop.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />

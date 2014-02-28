@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public abstract class MosconAbstract : MonoBehaviour
 {
@@ -10,17 +11,23 @@ public abstract class MosconAbstract : MonoBehaviour
 	public int Timer {get; set;}
 	private ScoreController scoreController;
 	Girlfriend girlfriend;
+	bool dying;
 
 
 	void Update()
 	{
-		if(this.Life <= 0)
+		if(this.Life <= 0 && !dying)
 		{
-			Destroy(this.gameObject);
-			FindObjectOfType<GameController>().NumberOfMoscones--;
-			FindObjectOfType<ScoreController>().Score += 50;
+			this.dying = true;
+			this.GetComponent<MosconAbstractLWF>().LoadState(3,() => {
+				FindObjectOfType<GameController>().NumberOfMoscones--;
+				FindObjectOfType<ScoreController>().Score += 50;
+				Destroy(this.gameObject);
+				return 0;
+			});
 		}
 	}
+
 
 	public void SetVelocity(int minVelocity, int maxVelocity)
 	{
@@ -30,7 +37,7 @@ public abstract class MosconAbstract : MonoBehaviour
 
 	public int GetVelocity()
 	{
-		this.Velocity = Random.Range(MinVelocity, MaxVelocity);
+		this.Velocity = UnityEngine.Random.Range(MinVelocity, MaxVelocity);
 		return Velocity;
 	}
 

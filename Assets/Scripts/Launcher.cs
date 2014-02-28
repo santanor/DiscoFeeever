@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 public class Launcher : MonoBehaviour {
 
-	public int Level;
+	int Level;
 	JSONObject jObject;
     List<MosconAbstract> moscones;
 	float timer;
 	IDictionary<string, GameObject> mosconesObj;
+	public string hour;
 
 
 	// Use this for initialization
@@ -21,9 +22,11 @@ public class Launcher : MonoBehaviour {
 		Level = PlayerPrefs.GetInt("Level",0);
 		moscones = new List<MosconAbstract>();
 		jObject = new JSONObject(Resources.Load("levels").ToString());
-		foreach(var obj in jObject["levels"]["level"][Level]["implements"]["implement"][0]["enemy"].list)
+		foreach(var obj in jObject["levels"]["level"][Level]["implement"]["enemy"].list)
 			CreateMoscon(obj[0].ToString().Replace("\"",""),obj[1].ToString().Replace("\"",""), obj[2].ToString().Replace("\"",""));
 		FindObjectOfType<GameController> ().NumberOfMoscones = moscones.Count;
+		FindObjectOfType<GameController>().SetHour(jObject["levels"]["level"][Level]["implement"]["-hour"].str);
+
 	}
 
 	void Update () {

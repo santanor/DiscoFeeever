@@ -23,9 +23,11 @@ public class NewGameButton : MonoBehaviour {
 	{
 		if(showWeaponChooser)
 		{
-			GUI.Box(new Rect(0,0,800,480),"Choose your weapons");
+			GUI.Box(new Rect(0,0,ScreenExtension.GetPercentWidth(100),ScreenExtension.GetPercentHeight(100)),"Choose your weapons");
 			GUILayout.BeginArea(new Rect(50,30,700,200));
-			selectedGrid = GUILayout.SelectionGrid(selectedGrid,aviableWeapons,2);
+			GUIStyle style = new GUIStyle();
+			style.onNormal.background = null;
+			selectedGrid = GUILayout.SelectionGrid(selectedGrid,aviableWeapons,4, style);
 			if(selectedGrid >= 0)
 				selectedWeapons[selectedGrid] = true;
 			selectedWeaponsTextures = aviableWeapons.Where(item => selectedWeapons[Array.IndexOf(aviableWeapons,item)]).ToArray();
@@ -33,12 +35,9 @@ public class NewGameButton : MonoBehaviour {
 			GUILayout.EndArea();
 
 			GUILayout.BeginArea(new Rect(50,250, 700,200));
-			selectedGrid = GUILayout.SelectionGrid(selectedGrid,selectedWeaponsTextures,4);
+			selectedGrid = GUILayout.SelectionGrid(selectedGrid,selectedWeaponsTextures,4,style);
 			if(selectedGrid >=0)
-			{
-				print(selectedGrid);
 				selectedWeapons[Array.IndexOf(aviableWeapons, selectedWeaponsTextures[selectedGrid])] = false;
-			}
 			selectedGrid = -1;
 			GUILayout.EndArea();
 
