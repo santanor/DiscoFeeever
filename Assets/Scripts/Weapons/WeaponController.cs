@@ -12,8 +12,8 @@ public class WeaponController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		cellWidth = ScreenExtension.GetPercentWidth(10f);
-		cellHeight = ScreenExtension.GetPercentHeight(16.666f);
+		cellWidth = ScreenExt.Width(10f);
+		cellHeight = ScreenExt.Height(16.666f);
 		selected = false;
         int a = Application.levelCount;
 	}
@@ -43,9 +43,9 @@ public class WeaponController : MonoBehaviour {
 		}
 		else if(selected)
 		{
-			float a = ScreenExtension.GetPercentWidth(16.666666666f);
-			float b = ScreenExtension.GetPercentHeight(16.666666666f);
-			float c = ScreenExtension.GetPercentHeight(85);
+			float a = ScreenExt.Width(16.666666666f);
+			float b = ScreenExt.Height(16.666666666f);
+			float c = ScreenExt.Height(85);
 			weaponTouched.GetComponent<WeaponAbstractLWF>().Dwarf();
 			if(touch.position.x > a && (touch.position.y > b && touch.position.y < c))
 			{

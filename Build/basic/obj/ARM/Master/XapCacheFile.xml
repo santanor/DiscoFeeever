@@ -1,33 +1,33 @@
-﻿<xapCache source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic_Master_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="02/02/2014 16:29:57">
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Master\basic.dll" archivePath="basic.dll" lastWriteTime="02/02/2014 16:29:52" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="31/01/2014 15:33:40" />
+﻿<xapCache source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\basic_Master_ARM.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="05/03/2014 12:58:21">
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Master\basic.dll" archivePath="basic.dll" lastWriteTime="05/03/2014 12:58:14" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="05/12/2013 2:22:02" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="05/12/2013 2:22:02" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="05/12/2013 2:22:02" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="05/12/2013 2:22:02" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="05/12/2013 2:22:02" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="05/12/2013 2:22:02" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\level0" archivePath="Data\level0" lastWriteTime="02/02/2014 16:29:39" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\mainData" archivePath="Data\mainData" lastWriteTime="02/02/2014 16:29:42" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\managedAssemblies.txt" archivePath="Data\managedAssemblies.txt" lastWriteTime="02/02/2014 16:29:51" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\resources.assets" archivePath="Data\resources.assets" lastWriteTime="02/02/2014 16:29:40" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\level0" archivePath="Data\level0" lastWriteTime="05/03/2014 12:57:56" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\mainData" archivePath="Data\mainData" lastWriteTime="05/03/2014 12:58:01" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\managedAssemblies.txt" archivePath="Data\managedAssemblies.txt" lastWriteTime="05/03/2014 12:58:13" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\resources.assets" archivePath="Data\resources.assets" lastWriteTime="05/03/2014 12:57:57" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\Resources\unity default resources" archivePath="Data\Resources\unity default resources" lastWriteTime="05/12/2013 2:39:34" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\Resources\unity_builtin_extra" archivePath="Data\Resources\unity_builtin_extra" lastWriteTime="02/02/2014 16:29:42" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\sharedassets0.assets" archivePath="Data\sharedassets0.assets" lastWriteTime="02/02/2014 16:29:42" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\sharedassets1.assets" archivePath="Data\sharedassets1.assets" lastWriteTime="02/02/2014 16:29:42" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="21/01/2014 18:47:43" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\Resources\unity_builtin_extra" archivePath="Data\Resources\unity_builtin_extra" lastWriteTime="05/03/2014 12:58:01" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\sharedassets0.assets" archivePath="Data\sharedassets0.assets" lastWriteTime="05/03/2014 12:58:01" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Data\sharedassets1.assets" archivePath="Data\sharedassets1.assets" lastWriteTime="05/03/2014 12:58:01" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="30/01/2014 12:55:32" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="05/12/2013 2:22:02" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="05/12/2013 2:22:02" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assembly-CSharp-firstpass.dll" archivePath="Assembly-CSharp-firstpass.dll" lastWriteTime="02/02/2014 16:29:49" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assembly-CSharp.dll" archivePath="Assembly-CSharp.dll" lastWriteTime="02/02/2014 16:29:51" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assembly-CSharp-firstpass.dll" archivePath="Assembly-CSharp-firstpass.dll" lastWriteTime="05/03/2014 12:58:11" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Assembly-CSharp.dll" archivePath="Assembly-CSharp.dll" lastWriteTime="05/03/2014 12:58:13" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\BridgeInterface.winmd" archivePath="BridgeInterface.winmd" lastWriteTime="11/12/2013 22:57:36" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\UnityEngine.dll" archivePath="UnityEngine.dll" lastWriteTime="02/02/2014 16:29:47" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\UnityEngine.dll" archivePath="UnityEngine.dll" lastWriteTime="05/03/2014 12:58:08" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\UnityEngineDelegates.winmd" archivePath="UnityEngineDelegates.winmd" lastWriteTime="11/12/2013 22:57:38" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\UnityEngineProxy.dll" archivePath="UnityEngineProxy.dll" lastWriteTime="11/12/2013 22:57:42" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\UnityPlayer.winmd" archivePath="UnityPlayer.winmd" lastWriteTime="11/12/2013 23:06:34" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\WinRTBridge.dll" archivePath="WinRTBridge.dll" lastWriteTime="11/12/2013 22:57:40" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\WinRTLegacy.dll" archivePath="WinRTLegacy.dll" lastWriteTime="02/02/2014 16:29:48" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\WinRTLegacy.dll" archivePath="WinRTLegacy.dll" lastWriteTime="05/03/2014 12:58:09" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\BridgeInterface.dll" archivePath="BridgeInterface.dll" lastWriteTime="11/12/2013 22:57:36" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\UnityEngineDelegates.dll" archivePath="UnityEngineDelegates.dll" lastWriteTime="11/12/2013 22:57:38" />
   <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\Players\ARM\Master\UnityPlayer.dll" archivePath="UnityPlayer.dll" lastWriteTime="11/12/2013 23:07:18" />
-  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="21/01/2014 18:47:45" />
+  <file source="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="05/03/2014 9:42:47" />
 </xapCache>

@@ -10,33 +10,45 @@ public class SpecialWeaponChooser : MonoBehaviour {
 	Vector3[] positionSpecialWeapons;
 	GameObject[] currentSpecialWeapons;
 	float timeToReload;
+	IDictionary<string, string> _weaponToPlayerPrefs;
+
 
 	// Use this for initialization
 	void Start () 
 	{
-		float offset;
-		//PlayerPrefs.SetString("SpecialWeapons","0");
-		string a = PlayerPrefs.GetString("SpecialWeapons","");
 		timeToReload = 5f;
-		IList<Object> sWeapons = new List<Object>();
 		specialWeaponsUsed = new bool[2];
 		currentSpecialWeapons = new GameObject[2];
 		positionSpecialWeapons = new Vector3[2];
-		foreach(string weapon in PlayerPrefs.GetString("SpecialWeapons","").Split(',')) //El formato es algo como (2,1,5,3)
-			sWeapons.Add(Resources.Load("Prefabs/SpecialWeapons/"+weapon));
-		specialWeapons = sWeapons.ToArray();
+		_weaponToPlayerPrefs = new Dictionary<string,string> ();
+		specialWeapons = Resources.LoadAll ("Prefabs/SpecialWeapons/");
+	}
+
+	public void _Start()
+	{
+		float offset;
+		//Suponiendo las 6 armas especiales del principio
+		_weaponToPlayerPrefs.Add (specialWeapons [0].name, "extintorNivel1"); 
+		_weaponToPlayerPrefs.Add (specialWeapons [1].name, "muñecaNivel1"); 
+		_weaponToPlayerPrefs.Add (specialWeapons [2].name, "chupitoNivel1"); 
+		_weaponToPlayerPrefs.Add (specialWeapons [3].name, "extintorNivel2"); 
+		_weaponToPlayerPrefs.Add (specialWeapons [4].name, "muñecaNivel2"); 
+		_weaponToPlayerPrefs.Add (specialWeapons [5].name, "chupitoNivel2"); 
 
 		for(int i = 0; i < 2; i++)
 		{
 			GameObject weapon = ChooseWeapon();
 			offset = i*0.1f;
 			positionSpecialWeapons[i] = Camera.main.ViewportToWorldPoint(new Vector3(0.8f+offset,0.14f,80));
-			weapon.transform.position = positionSpecialWeapons[i];
-			weapon.GetComponent<WeaponAbstract>().Position = i;
-			weapon.GetComponent<WeaponAbstract>().PositionVector = positionSpecialWeapons[i];
-			weapon.GetComponent<WeaponAbstract>().special = true;
-			specialWeaponsUsed[i] = true;
-			currentSpecialWeapons[i] = weapon;
+			if(weapon != null)
+			{
+				weapon.transform.position = positionSpecialWeapons[i];
+				weapon.GetComponent<WeaponAbstract>().Position = i;
+				weapon.GetComponent<WeaponAbstract>().PositionVector = positionSpecialWeapons[i];
+				weapon.GetComponent<WeaponAbstract>().special = true;
+				specialWeaponsUsed[i] = true;
+				currentSpecialWeapons[i] = weapon;
+			}
 		}
 	}
 	
@@ -49,8 +61,8 @@ public class SpecialWeaponChooser : MonoBehaviour {
 			{
 				currentSpecialWeapons[i] = null;
 				StartCoroutine(ReloadWeapon(i));
-				specialWeaponsUsed[i] = true;
 			}
+				specialWeaponsUsed[i] = true;
 		}
 	}
 
@@ -64,12 +76,34 @@ public class SpecialWeaponChooser : MonoBehaviour {
 			yield return null;
 		}
 		currentSpecialWeapons[i] = ChooseWeapon();
-		currentSpecialWeapons[i].GetComponent<WeaponAbstract>().special = true;
-		currentSpecialWeapons[i].transform.position = positionSpecialWeapons[i];
+		if (currentSpecialWeapons [i] != null) 
+		{
+			currentSpecialWeapons [i].GetComponent<WeaponAbstract> ().special = true;
+			currentSpecialWeapons [i].transform.position = positionSpecialWeapons [i];
+		}
 	}
 
 	GameObject ChooseWeapon()
 	{
-		return Instantiate(specialWeapons[Random.Range(0, specialWeapons.Length)]) as GameObject;
+		Object[] objs = specialWeapons.Where (item => PlayerPrefs.GetInt(_weaponToPlayerPrefs[item.name]) > 0).ToArray();
+		if (objs.Length >= 1) 
+		{
+			GameObject go = Instantiate (objs [Random.Range (0, objs.Length)]) as GameObject;
+			PlayerPrefs.SetInt (_weaponToPlayerPrefs [go.name.Replace ("(Clone)", "")], PlayerPrefs.GetInt (_weaponToPlayerPrefs [go.name.Replace ("(Clone)", "")]) - 1);
+			//print(PlayerPrefs.GetInt (_weaponToPlayerPrefs [go.name.Replace ("(Clone)", "")]));
+			return go;
+		}
+		return null;
 	}
+
+	public void ReincorporateWeapons()
+	{
+		for (int i = 0; i < this.specialWeaponsUsed.Length; i++)
+		{
+			if(currentSpecialWeapons[i] != null)			
+				PlayerPrefs.SetInt(_weaponToPlayerPrefs[currentSpecialWeapons[i].name.Replace ("(Clone)", "")], PlayerPrefs.GetInt(_weaponToPlayerPrefs[currentSpecialWeapons[i].name.Replace ("(Clone)", "")])+1);
+
+		}
+	}
+
 }

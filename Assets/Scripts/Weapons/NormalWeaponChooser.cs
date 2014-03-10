@@ -19,11 +19,16 @@ public class NormalWeaponChooser : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		float offset;
-        normalWeapons = Resources.LoadAll("Prefabs/NormalWeapons");
+
+		normalWeapons = Resources.LoadAll("Prefabs/NormalWeapons");
 		normalWeaponsUsed = new bool[3]; 
 		positionNormalWeapons = new Vector3[4];
 		currentNormalWeapons = new GameObject[4];
+	}
+
+	public void _Start()
+	{
+		float offset;
 		timeToMove = 1.5f;
 		for(int i = 0; i < 3; i++)
 		{

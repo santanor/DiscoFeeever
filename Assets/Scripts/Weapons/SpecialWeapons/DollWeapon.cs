@@ -39,6 +39,7 @@ public class DollWeapon : WeaponAbstract {
 			yield return null;
 		}
 		gObject.rigidbody2D.velocity = Vector3.left * gObject.GetComponent<MosconAbstract>().GetVelocity();
+		gObject.GetComponent<MosconAbstractLWF>().LoadState(0);
 	}
 
 	public override void ExecuteDropedExit(GameObject gObject)
