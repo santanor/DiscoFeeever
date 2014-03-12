@@ -46,10 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CoupleSelectGameplayController.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Resources\Prefabs\Particle\CFX_Layer.cs" />
+     <Compile Include="Assets\ScenarioSelectGameplayController.cs" />
      <Compile Include="Assets\Scripts\Enemies\Chulo.cs" />
      <Compile Include="Assets\Scripts\Enemies\ChuloLWF.cs" />
      <Compile Include="Assets\Scripts\Enemies\Friki.cs" />
@@ -95,7 +97,7 @@
      <Compile Include="Assets\Scripts\Weapons\WeaponAbstractLWF.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponLauncher.cs" />
-     <Compile Include="Assets\SelectGameplayController.cs" />
+     <Compile Include="Assets\ShowCouple.cs" />
      <Compile Include="Assets\ShowScenario.cs" />
      <None Include="Assets\JSON\readme.txt" />
      <None Include="Assets\Fonts\TextureFont.shader" />

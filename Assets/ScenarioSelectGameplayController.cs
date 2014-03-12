@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SelectGameplayController : MonoBehaviour {
+public class ScenarioSelectGameplayController : MonoBehaviour {
 	
 	Vector3 _scenarioPosition;
 	GameObject _currentScenario;
@@ -14,6 +14,7 @@ public class SelectGameplayController : MonoBehaviour {
 		_scenarioPosition = Camera.main.ViewportToWorldPoint (new Vector3 (0.2f, 0.8f));
 		_currentScenario = Instantiate (_scenarios [0], _scenarioPosition, Quaternion.identity)as GameObject;
 		_currentScenarioIndex = 0;
+		FindObjectOfType<CoupleSelectGameplayController> ().enabled = false;
 	}
 
 	void Update()
@@ -102,5 +103,27 @@ public class SelectGameplayController : MonoBehaviour {
 			_currentScenario.transform.position = Vector3.MoveTowards (_currentScenario.transform.position, _scenarioPosition, 30f);
 			yield return null;
 		}
+	}
+
+	IEnumerator MoveScenarioTop()
+	{
+		PlayerPrefs.SetString ("currentScenario", _currentScenario.name);
+		Vector3 position = Camera.main.ViewportToWorldPoint (new Vector3 (0.2f, 1f));
+		position.y += _currentScenario.GetComponent<ShowScenario> ().lwf.height;
+		while (_currentScenario.transform.position != position)
+		{
+			_currentScenario.transform.position = Vector3.MoveTowards (_currentScenario.transform.position, position, 30f);
+			yield return null;
+		}
+		Destroy (_currentScenario);
+		FindObjectOfType<CoupleSelectGameplayController> ().enabled = true;
+		FindObjectOfType<CoupleSelectGameplayController> ().Restart ();
+		FindObjectOfType<ScenarioSelectGameplayController> ().enabled = false;
+	}
+
+	void OnGUI()
+	{
+		if (GUI.Button (new Rect (ScreenExt.Width (45), ScreenExt.Height (85), ScreenExt.Width (10), ScreenExt.Height (10)), "Go"))
+			StartCoroutine (MoveScenarioTop ());
 	}
 }
