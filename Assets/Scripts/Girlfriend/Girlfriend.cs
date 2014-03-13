@@ -10,9 +10,5 @@ public class Girlfriend : MonoBehaviour {
 		this.Life = 100;
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
 }
