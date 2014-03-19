@@ -12,7 +12,7 @@ public class ExtinguisherWeapon : WeaponAbstract {
 		normalWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<NormalWeaponChooser>();
 		specialWeaponChooser = GameObject.Find("Weapon Controller").GetComponent<SpecialWeaponChooser>();
 		this.special = true;
-		explosionRadius = 50;
+		explosionRadius = 100;
 		base.Damage = 100;
 		FloorDuration = int.MaxValue;
 	}

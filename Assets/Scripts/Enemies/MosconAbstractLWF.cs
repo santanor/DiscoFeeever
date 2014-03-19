@@ -14,7 +14,7 @@ public class MosconAbstractLWF : LWFObject {
 		if (dir.Length > 0)
 			dir += "/";
 		
-		Scale(0.3f,0.3f);
+		Scale(0.7f,0.7f);
 		Load(states[0], dir);
 	}
 	

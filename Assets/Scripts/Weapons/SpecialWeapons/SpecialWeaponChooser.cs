@@ -39,7 +39,7 @@ public class SpecialWeaponChooser : MonoBehaviour {
 		{
 			GameObject weapon = ChooseWeapon();
 			offset = i*0.1f;
-			positionSpecialWeapons[i] = Camera.main.ViewportToWorldPoint(new Vector3(0.8f+offset,0.14f,80));
+			positionSpecialWeapons[i] = Camera.main.ViewportToWorldPoint(new Vector3(0.8f+offset,0.16f,80));
 			if(weapon != null)
 			{
 				weapon.transform.position = positionSpecialWeapons[i];

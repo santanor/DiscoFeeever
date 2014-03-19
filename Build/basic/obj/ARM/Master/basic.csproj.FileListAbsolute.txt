@@ -46,3 +46,5 @@ C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Master\basic.csp
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Master\basic.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Master\basic.pdb
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Master\XapCacheFile.xml
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\level1
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Master\Data\sharedassets2.assets

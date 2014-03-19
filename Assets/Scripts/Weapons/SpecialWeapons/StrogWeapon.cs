@@ -35,7 +35,7 @@ public class StrogWeapon : WeaponAbstract {
 	{
 		foreach(MosconAbstract go in FindObjectsOfType<MosconAbstract>().Where(x => 
 								      x.gameObject.activeSelf == true).Where(x => 
-								      Vector3.Distance(x.transform.position, new Vector3(x.transform.position.x,this.gameObject.transform.position.y,x.transform.position.z) ) < 20))
+								      Vector3.Distance(x.transform.position, new Vector3(x.transform.position.x,this.gameObject.transform.position.y,x.transform.position.z) ) < 30))
 		
 			go.Life -= Damage;
 		Destroy(this.gameObject);

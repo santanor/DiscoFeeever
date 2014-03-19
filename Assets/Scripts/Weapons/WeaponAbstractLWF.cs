@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using LWF;
 
-[ExecuteInEditMode]
+
 public abstract class WeaponAbstractLWF : LWFObject {
 
 	public string[] Images;
@@ -20,7 +20,7 @@ public abstract class WeaponAbstractLWF : LWFObject {
 
 
 		Load(Images[0], dir);
-		Scale (0.30f,0.30f);
+		Scale (0.7f,0.7f);
 	}
 
 	public void SetSprite(int index)
@@ -32,7 +32,7 @@ public abstract class WeaponAbstractLWF : LWFObject {
 			UseDrawMeshRenderer();
 
 		Load(Images[index], dir);
-		Scale (0.30f,0.30f);
+		Scale (0.7f,0.7f);
 
 	}
 
@@ -43,7 +43,7 @@ public abstract class WeaponAbstractLWF : LWFObject {
 		if (dir.Length > 0)
 			dir += "/";
 		Load(Images[state], dir, lwfLoadCallback:State_Callback);
-		Scale(0.3f,0.3f);
+		Scale(0.7f,0.7f);
 
 	}
 

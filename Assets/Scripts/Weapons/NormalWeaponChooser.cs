@@ -29,12 +29,12 @@ public class NormalWeaponChooser : MonoBehaviour {
 	public void _Start()
 	{
 		float offset;
-		timeToMove = 1.5f;
+		timeToMove = 10f;
 		for(int i = 0; i < 3; i++)
 		{
 			GameObject weapon = ChooseWeapon();
-			offset = i*0.1f;
-			positionNormalWeapons[i] = Camera.main.ViewportToWorldPoint(new Vector3(0.3f+offset,0.11f,80));
+			offset = i*0.13f;
+			positionNormalWeapons[i] = Camera.main.ViewportToWorldPoint(new Vector3(0.3f+offset,0.12f,80));
 			weapon.transform.position = positionNormalWeapons[i];
 			weapon.GetComponent<WeaponAbstract>().Position = i;
 			weapon.GetComponent<WeaponAbstract>().PositionVector = positionNormalWeapons[i];
@@ -43,10 +43,11 @@ public class NormalWeaponChooser : MonoBehaviour {
 		}
 		currentNormalWeapons[3] = ChooseWeapon();
 		offset = 0.3f;
-		positionNormalWeapons[3] = Camera.main.ViewportToWorldPoint(new Vector3(0.6f,0.11f,1f));
+		positionNormalWeapons[3] = Camera.main.ViewportToWorldPoint(new Vector3(0.68f,0.11f,1f));
 		currentNormalWeapons[3].transform.position = positionNormalWeapons[3];
 		currentNormalWeapons[3].GetComponent<WeaponAbstract>().PositionVector = positionNormalWeapons[3];
 		currentNormalWeapons[3].collider2D.enabled = false;
+		currentNormalWeapons[3].GetComponent<WeaponAbstractLWF> ().SetAlpha (0.5f);
 	}
 
 	void Update()
@@ -73,7 +74,7 @@ public class NormalWeaponChooser : MonoBehaviour {
 		currentNormalWeapons[3] = ChooseWeapon();
 		currentNormalWeapons[3].transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0.7f,-0.2f,1f));
 		currentNormalWeapons[3].collider2D.enabled = false;
-
+		currentNormalWeapons[3].GetComponent<WeaponAbstractLWF> ().SetAlpha (0.5f);
 
 		for(int i =0; i < this.currentNormalWeapons.Length; i++)
 		{

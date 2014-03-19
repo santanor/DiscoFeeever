@@ -50,7 +50,7 @@ public abstract class WeaponAbstract : MonoBehaviour {
 		float distance = Vector3.Distance(this.transform.position, cellPosition)/2;
 		while(this.transform.position != cellPosition)
 		{
-			this.transform.position = Vector3.MoveTowards(this.transform.position, cellPosition, 6f);
+			this.transform.position = Vector3.MoveTowards(this.transform.position, cellPosition, 15f);
 			if(Vector3.Distance(this.transform.position, cellPosition) > distance)
 				this.GetComponent<WeaponAbstractLWF>().Scale(1.03f,1.03f);
 			else

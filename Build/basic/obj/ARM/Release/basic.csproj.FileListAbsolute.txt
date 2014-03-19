@@ -47,3 +47,5 @@ C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\basic.cs
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\basic.dll
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\basic.pdb
 C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\obj\ARM\Release\XapCacheFile.xml
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\level1
+C:\Users\Jose\Documents\GitHub\DiscoFeeever\Build\basic\Bin\ARM\Release\Data\sharedassets2.assets

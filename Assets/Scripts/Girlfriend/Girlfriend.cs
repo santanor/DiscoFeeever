@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Girlfriend : MonoBehaviour {
 
-	public float Life {get; set;}
+	public float Life;
 
 	// Use this for initialization
 	void Start () {

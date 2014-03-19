@@ -15,8 +15,8 @@ public class CoupleSelectGameplayController : MonoBehaviour {
 
 	void Start()
 	{
-		_heads = Resources.LoadAll ("Prefabs/Couples/Heads");
-		_bodies = Resources.LoadAll ("Prefabs/Couples/Bodies");
+		_heads = Resources.LoadAll ("Prefabs/Couples/Girl/Heads");
+		_bodies = Resources.LoadAll ("Prefabs/Couples/Girl/Bodies");
 		_currentBody = Instantiate(_bodies [0])  as GameObject;
 		_currentHead = Instantiate( _heads [0]) as GameObject;
 		_headPosition = Camera.main.ViewportToWorldPoint (new Vector3 (0.43f, 0.88f));
@@ -64,11 +64,9 @@ public class CoupleSelectGameplayController : MonoBehaviour {
 		//Avanti
 		if (GUI.Button (new Rect (ScreenExt.Width (85), ScreenExt.Height (85), ScreenExt.Width (10), ScreenExt.Height (10)), "Avanti")) 
 		{
-			GameObject couple = new GameObject("couple");
-			couple.transform.position = _headPosition;
-			_currentBody.transform.parent = couple.transform;
-			_currentHead.transform.parent = couple.transform;
-			UnityEditor.PrefabUtility.CreatePrefab("Assets/Resources/Prefabs/Couples/couple.prefab",couple);
+
+			PlayerPrefs.SetString("currentHead", _currentHead.name);
+			PlayerPrefs.SetString("currentBody", _currentBody.name);
 			Application.LoadLevel("levels");
 		}
 	}
