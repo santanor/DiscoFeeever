@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_WP8;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;UNITY_WINRT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_SERIALIZATION_BY_CODEGENERATION;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_1;UNITY_4_5;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,76 +39,28 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/WP8Support/Tools/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
 	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CoupleSelectGameplayController.cs" />
-     <Compile Include="Assets\DontDestroyOnLoadAudio.cs" />
-     <Compile Include="Assets\JSON\JSONObject.cs" />
-     <Compile Include="Assets\JSON\JSONTemplates.cs" />
-     <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Resources\Prefabs\Particle\CFX_Layer.cs" />
-     <Compile Include="Assets\ScenarioSelectGameplayController.cs" />
-     <Compile Include="Assets\Scripts\Enemies\Chulo.cs" />
-     <Compile Include="Assets\Scripts\Enemies\ChuloLWF.cs" />
-     <Compile Include="Assets\Scripts\Enemies\Friki.cs" />
-     <Compile Include="Assets\Scripts\Enemies\FrikiLWF.cs" />
-     <Compile Include="Assets\Scripts\Enemies\Garrulo.cs" />
-     <Compile Include="Assets\Scripts\Enemies\GarruloLWF.cs" />
-     <Compile Include="Assets\Scripts\Enemies\MosconAbstract.cs" />
-     <Compile Include="Assets\Scripts\Enemies\MosconAbstractLWF.cs" />
-     <Compile Include="Assets\Scripts\Enemies\Torrente.cs" />
-     <Compile Include="Assets\Scripts\Enemies\TorrenteLWF.cs" />
-     <Compile Include="Assets\Scripts\GamePlay Controller\GameController.cs" />
-     <Compile Include="Assets\Scripts\GamePlay Controller\Launcher.cs" />
-     <Compile Include="Assets\Scripts\GamePlay Controller\Shop.cs" />
-     <Compile Include="Assets\Scripts\Girlfriend\Girlfriend.cs" />
-     <Compile Include="Assets\Scripts\Girlfriend\GirlfriendLWF.cs" />
-     <Compile Include="Assets\Scripts\Girlfriend\GirlfriendLifeController.cs" />
-     <Compile Include="Assets\Scripts\Interface\GridController.cs" />
-     <Compile Include="Assets\Scripts\Interface\HUDFPS.cs" />
-     <Compile Include="Assets\Scripts\Interface\HourGUITextController.cs" />
-     <Compile Include="Assets\Scripts\Interface\MainMenuController.cs" />
-     <Compile Include="Assets\Scripts\Interface\ScoreController.cs" />
-     <Compile Include="Assets\Scripts\Menus\LogoController.cs" />
-     <Compile Include="Assets\Scripts\Menus\LogoLWF.cs" />
-     <Compile Include="Assets\Scripts\Menus\NewGameButton.cs" />
-     <Compile Include="Assets\Scripts\ScreenExt.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BlueWeapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BlueWeaponLFW.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BrownWeapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\BrownWeaponLWF.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\GreenWeapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\GreenWeaponLWF.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\PurpleWeapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\Normal Weapons\PurpleWeaponLWF.cs" />
-     <Compile Include="Assets\Scripts\Weapons\NormalWeaponChooser.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\DollWeapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\DollWeaponLWF.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\ExtinguisherWeapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\ExtinguisherWeaponLWF.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\SpecialWeaponChooser.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\StrogWeapon.cs" />
-     <Compile Include="Assets\Scripts\Weapons\SpecialWeapons\StrogWeaponLWF.cs" />
-     <Compile Include="Assets\Scripts\Weapons\WeaponAbstract.cs" />
-     <Compile Include="Assets\Scripts\Weapons\WeaponAbstractLWF.cs" />
-     <Compile Include="Assets\Scripts\Weapons\WeaponController.cs" />
-     <Compile Include="Assets\Scripts\Weapons\WeaponLauncher.cs" />
-     <Compile Include="Assets\ShowBacground.cs" />
-     <Compile Include="Assets\ShowCouple.cs" />
-     <Compile Include="Assets\ShowScenario.cs" />
-     <Compile Include="Assets\ShowTable.cs" />
-     <None Include="Assets\JSON\readme.txt" />
-     <None Include="Assets\Fonts\TextureFont.shader" />
+     <Compile Include="Assets\Scrips\ScenarioController.cs" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
      <None Include="Assets\Resources\LWFShaders\LWFPreMultipliedAlpha.shader" />
      <None Include="Assets\Resources\LWFShaders\LWFNormal.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Detail.shader" />
      <None Include="Assets\Resources\LWFShaders\SystemFont.shader" />
      <None Include="Assets\Resources\LWFShaders\BitmapFont.shader" />
-     <None Include="Assets\levels.xml" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Reflective.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Particles Additive Culled.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
+     <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">

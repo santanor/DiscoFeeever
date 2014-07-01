@@ -1,0 +1,98 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/WP8Support/Tools/UnityEngine.dll"
+-r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_WP8
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_AUDIO_FMOD
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_GENERICS
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:UNITY_WINRT
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_SERIALIZATION_BY_CODEGENERATION
+-define:ENABLE_CLOTH
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:UNITY_4_3_2
+-define:UNITY_4_3
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+Assets/JSON/JSONObject.cs
+Assets/JSON/JSONTemplates.cs
+Assets/JSON/VectorTemplates.cs
+Assets/Resources/Prefabs/Particle/CFX_Layer.cs
+Assets/Scripts/CoupleSelectGameplayController.cs
+Assets/Scripts/DontDestroyOnLoadAudio.cs
+Assets/Scripts/Enemies/Chulo.cs
+Assets/Scripts/Enemies/ChuloLWF.cs
+Assets/Scripts/Enemies/Friki.cs
+Assets/Scripts/Enemies/FrikiLWF.cs
+Assets/Scripts/Enemies/Garrulo.cs
+Assets/Scripts/Enemies/GarruloLWF.cs
+Assets/Scripts/Enemies/MosconAbstract.cs
+Assets/Scripts/Enemies/MosconAbstractLWF.cs
+Assets/Scripts/Enemies/Torrente.cs
+Assets/Scripts/Enemies/TorrenteLWF.cs
+"Assets/Scripts/GamePlay Controller/GameController.cs"
+"Assets/Scripts/GamePlay Controller/Launcher.cs"
+"Assets/Scripts/GamePlay Controller/ScoreEntry.cs"
+"Assets/Scripts/GamePlay Controller/Shop.cs"
+Assets/Scripts/Girlfriend/Girlfriend.cs
+Assets/Scripts/Girlfriend/GirlfriendLWF.cs
+Assets/Scripts/Girlfriend/GirlfriendLifeController.cs
+Assets/Scripts/Interface/GridController.cs
+Assets/Scripts/Interface/HUDFPS.cs
+Assets/Scripts/Interface/HourGUITextController.cs
+Assets/Scripts/Interface/MainMenuController.cs
+Assets/Scripts/Interface/ScoreController.cs
+Assets/Scripts/LogoController.cs
+Assets/Scripts/Menus/LogoController.cs
+Assets/Scripts/Menus/LogoLWF.cs
+Assets/Scripts/Menus/NewGameButton.cs
+Assets/Scripts/RankingController.cs
+Assets/Scripts/ScenarioSelectGameplayController.cs
+Assets/Scripts/ScreenExt.cs
+Assets/Scripts/ShowBacground.cs
+Assets/Scripts/ShowCouple.cs
+Assets/Scripts/ShowScenario.cs
+Assets/Scripts/ShowSelectGameplayBackground.cs
+Assets/Scripts/ShowTable.cs
+"Assets/Scripts/Weapons/Normal Weapons/BlueWeapon.cs"
+"Assets/Scripts/Weapons/Normal Weapons/BlueWeaponLFW.cs"
+"Assets/Scripts/Weapons/Normal Weapons/BrownWeapon.cs"
+"Assets/Scripts/Weapons/Normal Weapons/BrownWeaponLWF.cs"
+"Assets/Scripts/Weapons/Normal Weapons/GreenWeapon.cs"
+"Assets/Scripts/Weapons/Normal Weapons/GreenWeaponLWF.cs"
+"Assets/Scripts/Weapons/Normal Weapons/PurpleWeapon.cs"
+"Assets/Scripts/Weapons/Normal Weapons/PurpleWeaponLWF.cs"
+Assets/Scripts/Weapons/NormalWeaponChooser.cs
+Assets/Scripts/Weapons/SpecialWeapons/DollWeapon.cs
+Assets/Scripts/Weapons/SpecialWeapons/DollWeaponLWF.cs
+Assets/Scripts/Weapons/SpecialWeapons/ExtinguisherWeapon.cs
+Assets/Scripts/Weapons/SpecialWeapons/ExtinguisherWeaponLWF.cs
+Assets/Scripts/Weapons/SpecialWeapons/SpecialWeaponChooser.cs
+Assets/Scripts/Weapons/SpecialWeapons/StrogWeapon.cs
+Assets/Scripts/Weapons/SpecialWeapons/StrogWeaponLWF.cs
+Assets/Scripts/Weapons/WeaponAbstract.cs
+Assets/Scripts/Weapons/WeaponAbstractLWF.cs
+Assets/Scripts/Weapons/WeaponController.cs
+Assets/Scripts/Weapons/WeaponLauncher.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
