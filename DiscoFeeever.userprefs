@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scrips\ScenarioController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CameraController.cs">
     <Files>
-      <File FileName="Assets\Scrips\ScenarioController.cs" Line="15" Column="23" />
+      <File FileName="Assets\Scrips\ScenarioController.cs" Line="18" Column="1" />
+      <File FileName="Assets\CameraController.cs" Line="3" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
