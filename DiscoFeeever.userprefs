@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CameraController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scrips\GridController.cs">
     <Files>
-      <File FileName="Assets\Scrips\ScenarioController.cs" Line="18" Column="1" />
-      <File FileName="Assets\CameraController.cs" Line="3" Column="1" />
+      <File FileName="Assets\Scrips\GridController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\enemies\MosconAbstractLWF.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\ScenarioController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\interface\BarraLWF.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

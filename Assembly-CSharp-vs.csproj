@@ -46,9 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraSetup.cs" />
+     <Compile Include="Assets\NormalWeaponsController.cs" />
      <Compile Include="Assets\Scrips\GridController.cs" />
      <Compile Include="Assets\Scrips\ScenarioController.cs" />
-     <Compile Include="Assets\Tile.cs" />
+     <Compile Include="Assets\Scrips\enemies\GarruloLWF.cs" />
+     <Compile Include="Assets\Scrips\enemies\MosconAbstractLWF.cs" />
+     <Compile Include="Assets\Scrips\interface\BarraLWF.cs" />
+     <Compile Include="Assets\Scrips\interface\HUDFPS.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
