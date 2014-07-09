@@ -7,7 +7,7 @@ public class CameraSetup : MonoBehaviour {
     public float TARGET_HEIGHT = 640;
     public int PIXELS_TO_UNITS = 1; // 1:1 ratio of pixels to units
  // Use this for initialization
-    void Update()
+    void Start()
     {
         float desiredRatio = TARGET_WIDTH / TARGET_HEIGHT;
         float currentRatio = (float)Screen.width / (float)Screen.height;

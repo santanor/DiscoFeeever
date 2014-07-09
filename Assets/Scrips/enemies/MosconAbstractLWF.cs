@@ -9,14 +9,16 @@ public class MosconAbstractLWF : LWFObject {
 	public string[] states;
 	int callbackState;
 	Func<int> _callback;
-    public float PositionX {get; set;}
-    public float PositionY { get; set; }
+    public int PositionX {get; set;}
+    public int PositionY { get; set; }
     public int Turn { get; set;}
     public Colors color;
     public float scale;
+    private GridController grid;
 	// Use this for initialization
 	void Start()
 	{
+        grid = FindObjectOfType<GridController>();
 		string dir = System.IO.Path.GetDirectoryName(states[0]);
 		if (dir.Length > 0)
 			dir += "/";
@@ -61,11 +63,10 @@ public class MosconAbstractLWF : LWFObject {
 
     public IEnumerator MoveToPosition()
     {
-        while (this.transform.position != new Vector3(70+ 70 * PositionX, GameObject.Find("Position" + PositionY).transform.position.y, -12))
+        while (this.transform.position != grid.positions[PositionY, PositionX])
         {
-            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(70 + 70 * PositionX, GameObject.Find("Position" + PositionY).transform.position.y, -12), 0.1f);
+			this.transform.position = Vector3.Lerp(this.transform.position, grid.positions[PositionY, PositionX], 0.1f);
             yield return null;
-
         }
         yield return null;
     }

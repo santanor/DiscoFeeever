@@ -6,11 +6,63 @@ using Puppycode.PuppyScreen;
 public class GridController : MonoBehaviour {
 
     GameObject[,] grid;
+    public Vector3[,] positions;
     float timePerTurn;
     IList<GameObject> waveEnemies;
 	// Use this for initialization
 	void Start () {
         waveEnemies = new List<GameObject>();
+        positions = new Vector3[5, 9];
+        positions[0, 0] = new Vector3(170, -620, -8);
+        positions[0, 1] = new Vector3(310, -620, -8);
+        positions[0, 2] = new Vector3(440, -620, -8);
+        positions[0, 3] = new Vector3(580, -620, -8);
+        positions[0, 4] = new Vector3(710, -620, -8);
+        positions[0, 5] = new Vector3(850, -620, -8);
+        positions[0, 6] = new Vector3(990, -620, -8);
+        positions[0, 7] = new Vector3(1125, -620, -8);
+        positions[0, 8] = new Vector3(1245, -620, -8);
+
+        positions[1, 0] = new Vector3(170, -510, -7);
+        positions[1, 1] = new Vector3(310, -510, -7);
+        positions[1, 2] = new Vector3(440, -510, -7);
+        positions[1, 3] = new Vector3(580, -510, -7);
+        positions[1, 4] = new Vector3(710, -510, -7);
+        positions[1, 5] = new Vector3(850, -510, -7);
+        positions[1, 6] = new Vector3(990, -510, -7);
+        positions[1, 7] = new Vector3(1125, -510, -7);
+        positions[1, 8] = new Vector3(1245, -510, -7);
+
+        positions[2, 0] = new Vector3(170, -385, -6);
+        positions[2, 1] = new Vector3(310, -385, -6);
+        positions[2, 2] = new Vector3(440, -385, -6);
+        positions[2, 3] = new Vector3(580, -385, -6);
+        positions[2, 4] = new Vector3(710, -385, -6);
+        positions[2, 5] = new Vector3(850, -385, -6);
+        positions[2, 6] = new Vector3(990, -385, -6);
+        positions[2, 7] = new Vector3(1125, -385, -6);
+        positions[2, 8] = new Vector3(1245, -385, -6);
+
+        positions[3, 0] = new Vector3(170, -260, -5);
+        positions[3, 1] = new Vector3(310, -260, -5);
+        positions[3, 2] = new Vector3(440, -260, -5);
+        positions[3, 3] = new Vector3(580, -260, -5);
+        positions[3, 4] = new Vector3(710, -260, -5);
+        positions[3, 5] = new Vector3(850, -260, -5);
+        positions[3, 6] = new Vector3(990, -260, -5);
+        positions[3, 7] = new Vector3(1125, -260 - 5);
+        positions[3, 8] = new Vector3(1245, -260, -5);
+
+        positions[4, 0] = new Vector3(170, -137, -4);
+        positions[4, 1] = new Vector3(310, -137, -4);
+        positions[4, 2] = new Vector3(440, -137, -4);
+        positions[4, 3] = new Vector3(580, -137, -4);
+        positions[4, 4] = new Vector3(710, -137, -4);
+        positions[4, 5] = new Vector3(850, -137, -4);
+        positions[4, 6] = new Vector3(990, -137, -4);
+        positions[4, 7] = new Vector3(1125, -137, -4);
+        positions[4, 8] = new Vector3(1245, -137, -4);
+
         timePerTurn = 3f;
         grid = new GameObject[5, 8];
         //for(int i = 0; i < 5; i++)
