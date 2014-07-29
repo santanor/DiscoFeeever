@@ -20,8 +20,9 @@
 
 Shader "LWF/PreMultipliedAlpha" {
 	Properties {
-		_Color ("Color", Color) = (1, 1, 1, 1)
+		_Color ("Color", Color) = (1,1, 1, 1)
 		_MainTex ("Texture", 2D) = "white" {}
+		_ColorRamp ("Colour Palette", 2D) = "gray" {}
 	}
 
 	SubShader {
@@ -38,6 +39,7 @@ Shader "LWF/PreMultipliedAlpha" {
 			#pragma fragment frag
 			#include "UnityCG.cginc"
 			sampler2D _MainTex;
+			sampler2D _ColorRamp;
 			uniform half4 _MainTex_ST;
 			fixed4 _Color;
 			struct v2f {
@@ -45,6 +47,7 @@ Shader "LWF/PreMultipliedAlpha" {
 				float2 uv: TEXCOORD0;
 				fixed4 color: COLOR;
 			};
+			
 			v2f vert(appdata_full v)
 			{
 				v2f o;
@@ -55,7 +58,11 @@ Shader "LWF/PreMultipliedAlpha" {
 			}
 			fixed4 frag(v2f i): COLOR0
 			{
-				return tex2D(_MainTex, i.uv.xy) * i.color;
+				float greyscale = tex2D(_MainTex, i.uv).r;
+				float4 result;
+				result.rgb = tex2D(_ColorRamp, float2(greyscale, 0.5)).rgb;
+				result.a = tex2D(_MainTex, i.uv).a;
+				return result;
 			}
 			ENDCG
 		}

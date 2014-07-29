@@ -13,7 +13,7 @@ public class BarraLWF : LWFObject {
         Load(lwfName, dir);
         Scale(1.2f,1.2f);
         this.transform.position = PuppyScreen.ScreenAsWPoint(30, 0, 0);
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + this.lwf.height, -5);
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + this.lwf.height*1.2f, -5);
 
 	}
 }

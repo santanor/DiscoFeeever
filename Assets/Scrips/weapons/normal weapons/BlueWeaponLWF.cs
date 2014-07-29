@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class BlueWeaponLWF : WeaponAbstractLWF {
 
-    void Start()
+
+    public override void _Start()
     {
-        this.Color = "Blue";
+        base.Color = "Blue";
     }
     public override void LoadOnHitMosconState(MosconAbstractLWF moscon)
     {}

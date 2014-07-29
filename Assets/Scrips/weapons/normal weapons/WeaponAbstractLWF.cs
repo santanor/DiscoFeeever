@@ -15,7 +15,8 @@ public abstract class WeaponAbstractLWF : LWFObject {
     public string Color { get; set; }
     public float Damage { get; set; }
     public int FloorDuration { get; set; }
-    float _width;
+    public float _width;
+
 	void Start()
 	{
 		string dir = System.IO.Path.GetDirectoryName(Images[0]);
@@ -30,6 +31,7 @@ public abstract class WeaponAbstractLWF : LWFObject {
         this.Level = 1;
         this.FloorDuration = 0;
         _width = this.lwf.width;
+        _Start();
 	}
 
 	public void SetSprite(int index)
@@ -76,4 +78,5 @@ public abstract class WeaponAbstractLWF : LWFObject {
     }
 
 	abstract public void LoadOnHitMosconState(MosconAbstractLWF moscon);
+    abstract public void _Start();
 }

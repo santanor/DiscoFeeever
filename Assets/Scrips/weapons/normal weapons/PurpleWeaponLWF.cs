@@ -3,9 +3,10 @@ using System.Collections;
 
 public class PurpleWeaponLWF : WeaponAbstractLWF {
 
-    void Start()
+
+    public override void _Start()
     {
-        this.Color = "Purple";
+        base.Color = "Purple";
     }
     public override void LoadOnHitMosconState(MosconAbstractLWF moscon)
     { }

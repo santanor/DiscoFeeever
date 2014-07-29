@@ -84,7 +84,7 @@ public class LWFObject : MonoBehaviour
 	public LWF.UnityRenderer.Factory factory;
 	public string lwfName;
 	public bool isAlive;
-	protected RendererFactoryConstructor rendererFactoryConstructor;
+	public RendererFactoryConstructor rendererFactoryConstructor;
 	protected bool callUpdate;
 	protected bool useCombinedMeshRenderer;
 	protected LWFCallbacks lwfLoadCallbacks;
