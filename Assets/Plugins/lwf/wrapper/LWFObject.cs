@@ -152,7 +152,8 @@ public class LWFObject : MonoBehaviour
 		LWFCallback lwfDestroyCallback = null,
 		LWFDataLoader lwfDataLoader = null,
 		TextureLoader textureLoader = null,
-		TextureUnloader textureUnloader = null
+		TextureUnloader textureUnloader = null,
+		Texture ColorRampsTexture = null
 #if LWF_USE_LUA
 		, object luaState = null
 #endif
@@ -188,7 +189,7 @@ public class LWFObject : MonoBehaviour
 		} else {
 			factory = new LWF.DrawMeshRenderer.Factory(
 				data, gameObject, zOffset, zRate, renderQueueOffset, camera,
-				texturePrefix, fontPrefix, textureLoader, textureUnloader);
+				texturePrefix, fontPrefix, textureLoader, textureUnloader, ColorRampsTexture);
 		}
 
 #if LWF_USE_LUA

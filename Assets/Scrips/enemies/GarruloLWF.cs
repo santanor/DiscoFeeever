@@ -6,5 +6,8 @@ using LWF;
 public class GarruloLWF : MosconAbstractLWF
 {
 
-
+	public override void _Load()
+	{
+		Load (states[0], dir);
+	}
 }

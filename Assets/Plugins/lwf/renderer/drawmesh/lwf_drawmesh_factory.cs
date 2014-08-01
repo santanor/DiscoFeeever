@@ -32,11 +32,12 @@ public partial class Factory : UnityRenderer.Factory
 			float zOff = 0, float zR = 1, int rQOff = 0, Camera cam = null,
 			string texturePrfx = "", string fontPrfx = "",
 			TextureLoader textureLdr = null,
-			TextureUnloader textureUnldr = null)
+			TextureUnloader textureUnldr = null,
+			Texture ColorRampsTexture = null)
 		: base(gObj, zOff, zR, rQOff,
-			cam, texturePrfx, fontPrfx, textureLdr, textureUnldr)
+			cam, texturePrfx, fontPrfx, textureLdr, textureUnldr, ColorRampsTexture)
 	{
-		CreateBitmapContexts(data);
+		CreateBitmapContexts(data, ColorRampsTexture);
 	}
 
 	public override Renderer ConstructBitmap(LWF lwf,

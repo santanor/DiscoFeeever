@@ -30,7 +30,7 @@ public partial class Factory : IRendererFactory
 	private BitmapContext[] m_bitmapContexts;
 	private BitmapContext[] m_bitmapExContexts;
 
-	private void CreateBitmapContexts(Data data)
+	private void CreateBitmapContexts(Data data, Texture ColorRampsTexture = null)
 	{
 		m_bitmapContexts = new BitmapContext[data.bitmaps.Length];
 		for (int i = 0; i < data.bitmaps.Length; ++i) {
@@ -47,7 +47,7 @@ public partial class Factory : IRendererFactory
 			bitmapEx.w = 1;
 			bitmapEx.h = 1;
 			m_bitmapContexts[i] =
-				new BitmapContext(this, data, bitmapEx, bitmapExId);
+				new BitmapContext(this, data, bitmapEx, bitmapExId, ColorRampsTexture);
 		}
 
 		m_bitmapExContexts = new BitmapContext[data.bitmapExs.Length];
@@ -56,7 +56,7 @@ public partial class Factory : IRendererFactory
 			// Ignore null texture
 			if (bitmapEx.textureFragmentId == -1)
 				continue;
-			m_bitmapExContexts[i] = new BitmapContext(this, data, bitmapEx, i);
+			m_bitmapExContexts[i] = new BitmapContext(this, data, bitmapEx, i, ColorRampsTexture);
 		}
 	}
 
@@ -75,7 +75,7 @@ public partial class Factory : IRendererFactory
 public class BitmapContext
 {
 	private Factory m_factory;
-	private Material m_material;
+	public Material m_material;
 	private Mesh m_mesh;
 	private Data m_data;
 	private float m_height;
@@ -91,7 +91,7 @@ public class BitmapContext
 	public bool premultipliedAlpha {get {return m_premultipliedAlpha;}}
 
 	public BitmapContext(Factory factory,
-		Data data, Format.BitmapEx bitmapEx, int bitmapExId)
+		Data data, Format.BitmapEx bitmapEx, int bitmapExId, Texture ColorRamp = null)
 	{
 		m_factory = factory;
 		m_data = data;
@@ -107,7 +107,7 @@ public class BitmapContext
 
 		m_material = ResourceCache.SharedInstance().LoadTexture(
 			data.name, m_textureName, texture.format,
-			factory.textureLoader, factory.textureUnloader);
+			factory.textureLoader, factory.textureUnloader, ColorRamp: ColorRamp);
 		if (factory.renderQueueOffset != 0)
 			m_material.renderQueue += factory.renderQueueOffset;
 

@@ -91,7 +91,7 @@ public class ResourceCache
 {
 	private static ResourceCache s_instance;
 	private LWFDataLoader m_lwfDataLoader;
-	private TextureLoader m_textureLoader;
+	public TextureLoader m_textureLoader;
 	private TextureUnloader m_textureUnloader;
 	private LWFDataCache m_lwfDataCache;
 	private TextureCache m_textureCache;
@@ -182,7 +182,7 @@ public class ResourceCache
 
 	public Material LoadTexture(string lwfName,
 		string filename, int format, TextureLoader textureLoader = null,
-		TextureUnloader textureUnloader = null)
+		TextureUnloader textureUnloader = null, Texture ColorRamp = null)
 	{
 		TextureItem item;
 		string cacheName = lwfName + "/" + filename;
@@ -209,6 +209,9 @@ public class ResourceCache
 					string.Format("LWF/{0}/{1}", lwfName, filename);
 				material.name = material.mainTexture.name;
 			}
+			if(ColorRamp == null)
+				ColorRamp = Resources.Load<Texture>("ColorRamps/Trans");
+			material.SetTexture("_ColorRamp", ColorRamp);
 			material.color = new UnityEngine.Color(1, 1, 1, 1);
 
 			TextureContext context = new TextureContext(material,

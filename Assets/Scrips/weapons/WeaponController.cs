@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 
 public class WeaponController : MonoBehaviour {
 
@@ -16,7 +18,7 @@ public class WeaponController : MonoBehaviour {
         if (Input.touchCount == 1)
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 ManagePhaseEnd(Input.GetTouch(0));
-       // print(Camera.main.ScreenToWorldPoint( Input.mousePosition));
+        //print(Camera.main.ScreenToWorldPoint( Input.mousePosition));
     }
 
     private void ManagePhaseEnd(Touch touch)
@@ -37,8 +39,13 @@ public class WeaponController : MonoBehaviour {
         {
             if(touch.position.x < Camera.main.WorldToScreenPoint(new Vector3(160,0,0)).x || touch.position.y > Camera.main.WorldToScreenPoint(new Vector3(0,-160,0)).y || touch.position.y > Camera.main.WorldToScreenPoint(new Vector3(0, -760, 0)).y)
             {
-
-            }
+				Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+				int y = (int)((touchPosition.x - 165) / 140);
+				int x = Mathf.Abs( Mathf.Abs( (int)((touchPosition.y + 165) / 110)) -4);
+				weaponTouched.transform.position = FindObjectOfType<GridController>().positions[x,y];
+				GameObject.Find("Weapons").GetComponent<NormalWeaponsController>()._normalWeaponsUsed[weaponTouched.Position] = false;
+				selected = false;
+			}
             else if (touch.position.x > Camera.main.WorldToScreenPoint(new Vector3(160, 0, 0)).x && touch.position.y < Camera.main.WorldToScreenPoint(new Vector3(0, -760, 0)).y)
             {
                 hit = Physics2D.Raycast(ray.origin, -Vector2.up, 1);

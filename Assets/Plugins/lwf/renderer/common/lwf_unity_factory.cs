@@ -45,7 +45,8 @@ public partial class Factory : IRendererFactory
 		float zOff, float zR, int rQOff, Camera cam,
 		string texturePrfx = "", string fontPrfx = "",
 		TextureLoader textureLdr = null,
-		TextureUnloader textureUnldr = null)
+		TextureUnloader textureUnldr = null,
+		Texture ColorRampsTexture = null)
 	{
 		gameObject = gObj;
 		zOffset = zOff;

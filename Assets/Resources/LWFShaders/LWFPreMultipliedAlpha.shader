@@ -57,12 +57,20 @@ Shader "LWF/PreMultipliedAlpha" {
 				return o;
 			}
 			fixed4 frag(v2f i): COLOR0
-			{
+			{			
+				float4 test;
 				float greyscale = tex2D(_MainTex, i.uv).r;
+				test.a = tex2D(_ColorRamp, float2(greyscale, 0.5)).a;
 				float4 result;
-				result.rgb = tex2D(_ColorRamp, float2(greyscale, 0.5)).rgb;
-				result.a = tex2D(_MainTex, i.uv).a;
-				return result;
+                result.a = tex2D(_MainTex, i.uv).a;
+                    
+                if(test.a <  0.1)
+					result.rgb =  tex2D(_MainTex, i.uv).rgb;
+	            else if (result.a < 0.05)
+	                 result.rgb = tex2D(_MainTex, i.uv).rgb;
+	           else
+	                 result.rgb = tex2D(_ColorRamp, float2(greyscale, 0.5)).rgb;
+                    return result;
 			}
 			ENDCG
 		}

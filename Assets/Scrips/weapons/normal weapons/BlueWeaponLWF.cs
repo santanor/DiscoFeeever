@@ -9,6 +9,7 @@ public class BlueWeaponLWF : WeaponAbstractLWF {
     {
         base.Color = "Blue";
     }
+
     public override void LoadOnHitMosconState(MosconAbstractLWF moscon)
     {}
 }

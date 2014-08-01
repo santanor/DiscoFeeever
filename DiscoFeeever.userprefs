@@ -1,21 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Plugins\lwf\core\lwf_iobject.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scrips\weapons\normal weapons\PurpleWeaponLWF.cs">
     <Files>
-      <File FileName="Assets\Resources\LWFShaders\LWFPreMultipliedAlpha.shader" Line="1" Column="1" />
-      <File FileName="Assets\Resources\LWFShaders\LWFNormal.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\weapons\normal weapons\NormalWeaponsController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\weapons\WeaponController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\weapons\normal weapons\NormalWeaponsController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\GridController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scrips\enemies\GarruloLWF.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scrips\enemies\MazaoLWF.cs" Line="8" Column="2" />
       <File FileName="Assets\Scrips\enemies\MosconAbstractLWF.cs" Line="1" Column="1" />
-      <File FileName="Assets\Plugins\lwf\wrapper\LWFObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Plugins\lwf\core\lwf_core.cs" Line="1" Column="1" />
-      <File FileName="Assets\Plugins\lwf\renderer\common\lwf_unity_factory.cs" Line="1" Column="1" />
-      <File FileName="Assets\Plugins\lwf\renderer\common\lwf_unity_resourcecache.cs" Line="1" Column="1" />
-      <File FileName="Assets\Plugins\lwf\core\lwf_iobject.cs" Line="42" Column="3" />
+      <File FileName="Assets\Scrips\weapons\normal weapons\WeaponAbstractLWF.cs" Line="22" Column="1" />
+      <File FileName="Assets\Scrips\weapons\normal weapons\PurpleWeaponLWF.cs" Line="4" Column="20" />
+      <File FileName="Assets\Plugins\lwf\renderer\common\lwf_unity_resourcecache.cs" Line="133" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Assets\Plugins\lwf\renderer\common\lwf_unity_resourcecache.cs" line="206" />
+      <Breakpoint file="C:\Users\Jose\Documents\GitHub\DiscoFeeever\Assets\Scrips\weapons\normal weapons\NormalWeaponsController.cs" line="15" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

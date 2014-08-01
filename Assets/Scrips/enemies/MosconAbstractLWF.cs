@@ -3,7 +3,7 @@ using System.Collections;
 using LWF;
 using System;
 using Puppycode.PuppyScreen;
-public class MosconAbstractLWF : LWFObject {
+public abstract class MosconAbstractLWF : LWFObject {
 	
    public  enum Colors {red, green};
 	public string[] states;
@@ -14,19 +14,21 @@ public class MosconAbstractLWF : LWFObject {
     public int Turn { get; set;}
     public Colors color;
     public float scale;
+	public string dir;
     private GridController grid;
 	// Use this for initialization
 	void Start()
 	{
         grid = FindObjectOfType<GridController>();
-		string dir = System.IO.Path.GetDirectoryName(states[0]);
+		dir = System.IO.Path.GetDirectoryName(states[0]);
 		if (dir.Length > 0)
 			dir += "/";
 
         Scale(scale, scale);
-
-		Load(states[0], dir);
+		_Load();
 	}
+
+	abstract public void _Load();
 
 	public void LoadState(int state, Func<int> callback =null)
 	{

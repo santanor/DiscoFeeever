@@ -43,7 +43,7 @@ public class NormalWeaponsController : MonoBehaviour {
         for (int i = 0; i < 4; i++)
         {
             offset = i * 120f;
-            _positionNormalWeapons[i] = new Vector3(80f + offset - _currentNormalWeapons[i].GetComponent<WeaponAbstractLWF>()._width/2, 15f, -5);
+            _positionNormalWeapons[i] = new Vector3(80f + offset - _currentNormalWeapons[i].GetComponent<WeaponAbstractLWF>()._width/2, 80f, -5);
             _currentNormalWeapons[i].transform.localPosition = _positionNormalWeapons[i];
             _currentNormalWeapons[i].GetComponent<WeaponAbstractLWF>().Position = i;
             _currentNormalWeapons[i].GetComponent<WeaponAbstractLWF>().PositionVector = _positionNormalWeapons[i];
